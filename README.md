@@ -1,1 +1,1 @@
-App da ficha do jogador do sistema de RPG 3D&T. 
+App da ficha do personagem do sistema de RPG 3D&T. 

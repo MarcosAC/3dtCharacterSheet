@@ -8,7 +8,7 @@ class CharacterSheetScreen extends StatefulWidget {
 }
 
 class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
-  late final List<Widget> _data;
+  bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
             TextFormField(
               decoration: const InputDecoration(
                 labelText: "Nome",
-                //labelStyle: TextStyle(fontSize: 12),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
@@ -46,12 +45,23 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                           style: TextStyle(fontSize: 18),
                         ),
                         IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.expand_more))
+                          onPressed: () {
+                            setState(() {
+                              if (isVisible == true) {
+                                isVisible = false;
+                              } else {
+                                isVisible = true;
+                              }
+                            });
+                          },
+                          icon: isVisible
+                              ? const Icon(Icons.expand_less)
+                              : const Icon(Icons.expand_more),
+                        )
                       ],
                     ),
                     Visibility(
-                      visible: false,
+                      visible: isVisible,
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Column(

@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+App da ficha do jogador do sistema de RPG 3D&T. 
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

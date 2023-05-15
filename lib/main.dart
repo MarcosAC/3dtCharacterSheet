@@ -1,4 +1,4 @@
-import 'package:dtcharactersheet/screens/characterSheetScreen.dart';
+import 'package:dtcharactersheet/screens/character_sheet_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

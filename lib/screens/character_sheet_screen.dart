@@ -1,3 +1,5 @@
+import 'package:dtcharactersheet/widgets/characteristics.dart';
+import 'package:dtcharactersheet/widgets/characteristics_item.dart';
 import 'package:flutter/material.dart';
 
 class CharacterSheetScreen extends StatefulWidget {
@@ -35,220 +37,58 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-
-              // Características
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: ExpansionTile(
-                  expandedAlignment: Alignment.topLeft,
-                  childrenPadding:
-                      const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                  tilePadding: const EdgeInsets.only(left: 10, right: 5),
-                  title: const Text(
-                    "Características",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Força"),
-                        SizedBox(height: 3),
-                        Text("Habilidade"),
-                        SizedBox(height: 3),
-                        Text("Resistência"),
-                        SizedBox(height: 3),
-                        Text("Armadura"),
-                        SizedBox(height: 3),
-                        //Divider(height: 1, color: Colors.black),
-                        SizedBox(height: 10),
-                        Text("Poder de Fogo"),
-                        //SizedBox(height: 5),
-                        //Divider(height: 1, color: Colors.black),
-                        SizedBox(height: 10),
-                        Text("Pontos de Vida"),
-                        SizedBox(height: 10),
-                        Text("Expêrincia"),
-                      ],
-                    ),
-                  ],
-                ),
+              const Characteristics(
+                tittle: "Características",
+                items: [
+                  CharacteristicsItem(textItem: "Força"),
+                  CharacteristicsItem(textItem: "Habilidade"),
+                  CharacteristicsItem(textItem: "Resistência"),
+                  CharacteristicsItem(textItem: "Armadura"),
+                  CharacteristicsItem(textItem: "Poder de Fogo"),
+                  SizedBox(height: 10),
+                  CharacteristicsItem(textItem: "Pontos de Vida"),
+                  CharacteristicsItem(textItem: "Expêrincia")
+                ],
               ),
-
               const SizedBox(height: 10),
-
-              // Tipos de Dano
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: ExpansionTile(
-                  expandedAlignment: Alignment.topLeft,
-                  childrenPadding:
-                      const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                  tilePadding: const EdgeInsets.only(left: 10, right: 5),
-                  title: const Text(
-                    "Tipos de Dano",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Força"),
-                        SizedBox(height: 3),
-                        Text("Poder de Fogo"),
-                      ],
-                    ),
-                  ],
-                ),
+              const Characteristics(
+                tittle: "Tipos de Dano",
+                items: [
+                  CharacteristicsItem(textItem: "Força"),
+                  CharacteristicsItem(textItem: "Poder de Fogo")
+                ],
               ),
-
               const SizedBox(height: 10),
-
-              // Caminhos da Magia
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: ExpansionTile(
-                  expandedAlignment: Alignment.topLeft,
-                  childrenPadding:
-                      const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                  tilePadding: const EdgeInsets.only(left: 10, right: 5),
-                  title: const Text(
-                    "Caminhos da Magia",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Água"),
-                        SizedBox(height: 3),
-                        Text("Ar"),
-                        SizedBox(height: 3),
-                        Text("Fogo"),
-                        SizedBox(height: 3),
-                        Text("Luz"),
-                        SizedBox(height: 3),
-                        Text("Terra"),
-                        SizedBox(height: 3),
-                        Text("Trevas"),
-                      ],
-                    ),
-                  ],
-                ),
+              const Characteristics(
+                tittle: "Caminhos da Magia",
+                items: [
+                  CharacteristicsItem(textItem: "Água"),
+                  CharacteristicsItem(textItem: "Ar"),
+                  CharacteristicsItem(textItem: "Fogo"),
+                  CharacteristicsItem(textItem: "Luz"),
+                  CharacteristicsItem(textItem: "Terra"),
+                  CharacteristicsItem(textItem: "Trevas")
+                ],
               ),
-
               const SizedBox(height: 10),
-
-              // Vantagens
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: const ExpansionTile(
-                  expandedAlignment: Alignment.topLeft,
-                  childrenPadding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                  tilePadding: EdgeInsets.only(left: 10, right: 5),
-                  title: Text(
-                    "Vantagens",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  children: [],
-                ),
+              const Characteristics(
+                tittle: "Desvantagens",
+                items: [],
               ),
-
               const SizedBox(height: 10),
-
-              // Desvantagens
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: const ExpansionTile(
-                  expandedAlignment: Alignment.topLeft,
-                  childrenPadding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                  tilePadding: EdgeInsets.only(left: 10, right: 5),
-                  title: Text(
-                    "Desvantagens",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  children: [],
-                ),
+              const Characteristics(
+                tittle: "Magias Conhecidas",
+                items: [],
               ),
-
               const SizedBox(height: 10),
-
-              // Magias Conhecidas
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: const ExpansionTile(
-                  expandedAlignment: Alignment.topLeft,
-                  childrenPadding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                  tilePadding: EdgeInsets.only(left: 10, right: 5),
-                  title: Text(
-                    "Magias Conhecidas",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  children: [],
-                ),
+              const Characteristics(
+                tittle: "Dinheiro e Itens",
+                items: [],
               ),
-
               const SizedBox(height: 10),
-
-              // Dinheiro e Itens
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: const ExpansionTile(
-                  expandedAlignment: Alignment.topLeft,
-                  childrenPadding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                  tilePadding: EdgeInsets.only(left: 10, right: 5),
-                  title: Text(
-                    "Dinheiro e Itens",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  children: [],
-                ),
-              ),
-
-              const SizedBox(height: 10),
-
-              // História
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: const ExpansionTile(
-                  expandedAlignment: Alignment.topLeft,
-                  childrenPadding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                  tilePadding: EdgeInsets.only(left: 10, right: 5),
-                  title: Text(
-                    "História",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  children: [],
-                ),
+              const Characteristics(
+                tittle: "História",
+                items: [],
               ),
             ],
           ),

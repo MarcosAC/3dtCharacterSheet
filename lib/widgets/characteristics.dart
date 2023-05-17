@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Characteristics extends StatelessWidget {
-  const Characteristics({super.key, required this.tittle, this.items});
+  const Characteristics({super.key, required this.tittle, required this.item});
 
   final String tittle;
-  final List<Widget>? items;
+  final Widget item;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,7 @@ class Characteristics extends StatelessWidget {
           tittle,
           style: const TextStyle(fontSize: 18),
         ),
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: items!.map((e) => e).toList(),
-          ),
-        ],
+        children: [item],
       ),
     );
   }

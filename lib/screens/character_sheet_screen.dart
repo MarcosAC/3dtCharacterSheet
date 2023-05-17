@@ -37,58 +37,66 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              const Characteristics(
-                tittle: "Características",
-                items: [
-                  CharacteristicsItem(textItem: "Força"),
-                  CharacteristicsItem(textItem: "Habilidade"),
-                  CharacteristicsItem(textItem: "Resistência"),
-                  CharacteristicsItem(textItem: "Armadura"),
-                  CharacteristicsItem(textItem: "Poder de Fogo"),
-                  SizedBox(height: 10),
-                  CharacteristicsItem(textItem: "Pontos de Vida"),
-                  CharacteristicsItem(textItem: "Expêrincia")
-                ],
-              ),
+              Characteristics(
+                  tittle: "Características",
+                  item: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      CharacteristicsItem(textItem: "Força", points: 5),
+                      CharacteristicsItem(textItem: "Habilidade", points: 5),
+                      CharacteristicsItem(textItem: "Resistência", points: 5),
+                      CharacteristicsItem(textItem: "Armadura", points: 5),
+                      CharacteristicsItem(textItem: "Poder de Fogo", points: 5),
+                      SizedBox(height: 10),
+                      CharacteristicsItem(
+                          textItem: "Pontos de Vida", points: 5),
+                      CharacteristicsItem(textItem: "Expêrincia", points: 5)
+                    ],
+                  )),
               const SizedBox(height: 10),
-              const Characteristics(
+              Characteristics(
                 tittle: "Tipos de Dano",
-                items: [
-                  CharacteristicsItem(textItem: "Força"),
-                  CharacteristicsItem(textItem: "Poder de Fogo")
-                ],
+                item: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    CharacteristicsItem(textItem: "Força", points: 0),
+                    CharacteristicsItem(textItem: "Poder de Fogo", points: 0)
+                  ],
+                ),
               ),
               const SizedBox(height: 10),
-              const Characteristics(
+              Characteristics(
                 tittle: "Caminhos da Magia",
-                items: [
-                  CharacteristicsItem(textItem: "Água"),
-                  CharacteristicsItem(textItem: "Ar"),
-                  CharacteristicsItem(textItem: "Fogo"),
-                  CharacteristicsItem(textItem: "Luz"),
-                  CharacteristicsItem(textItem: "Terra"),
-                  CharacteristicsItem(textItem: "Trevas")
-                ],
+                item: Column(
+                  children: const [
+                    CharacteristicsItem(textItem: "Água", points: 10),
+                    CharacteristicsItem(textItem: "Ar", points: 10),
+                    CharacteristicsItem(textItem: "Fogo", points: 10),
+                    CharacteristicsItem(textItem: "Luz", points: 10),
+                    CharacteristicsItem(textItem: "Terra", points: 10),
+                    CharacteristicsItem(textItem: "Trevas", points: 10)
+                  ],
+                ),
               ),
               const SizedBox(height: 10),
-              const Characteristics(
+              Characteristics(
                 tittle: "Desvantagens",
-                items: [],
+                item: Container(),
               ),
               const SizedBox(height: 10),
-              const Characteristics(
+              Characteristics(
                 tittle: "Magias Conhecidas",
-                items: [],
+                item: Container(),
               ),
               const SizedBox(height: 10),
-              const Characteristics(
+              Characteristics(
                 tittle: "Dinheiro e Itens",
-                items: [],
+                item: Container(),
               ),
               const SizedBox(height: 10),
-              const Characteristics(
+              Characteristics(
                 tittle: "História",
-                items: [],
+                item: Container(),
               ),
             ],
           ),

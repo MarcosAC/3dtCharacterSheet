@@ -10,15 +10,9 @@ class CharacteristicsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 3),
-          child: Text(textItem),
-        ),
-        Points(quantity: points),
-      ],
-    );
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      Padding(padding: const EdgeInsets.only(bottom: 3), child: Text(textItem)),
+      Row(children: List<Widget>.generate(points, ((index) => const Points())))
+    ]);
   }
 }

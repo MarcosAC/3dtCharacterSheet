@@ -37,22 +37,68 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              Characteristics(
-                  tittle: "Características",
-                  item: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      CharacteristicsItem(textItem: "Força", points: 5),
-                      CharacteristicsItem(textItem: "Habilidade", points: 5),
-                      CharacteristicsItem(textItem: "Resistência", points: 5),
-                      CharacteristicsItem(textItem: "Armadura", points: 5),
-                      CharacteristicsItem(textItem: "Poder de Fogo", points: 5),
-                      SizedBox(height: 10),
-                      CharacteristicsItem(
-                          textItem: "Pontos de Vida", points: 5),
-                      CharacteristicsItem(textItem: "Expêrincia", points: 5)
-                    ],
-                  )),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.grey),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                ),
+                child: ExpansionTile(
+                  expandedAlignment: Alignment.topLeft,
+                  childrenPadding:
+                      const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                  tilePadding: const EdgeInsets.only(left: 10, right: 5),
+                  title: const Text(
+                    'Características',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Força'),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.remove_circle),
+                            ),
+                            const SizedBox(
+                              width: 100,
+                              height: 35,
+                              child: TextField(
+                                textAlign: TextAlign.center,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(10),
+                                  border: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(5))),
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.add_circle),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: const [Text('Habilidade')],
+                        ),
+                        Row(
+                          children: const [Text('Resistência')],
+                        ),
+                        Row(
+                          children: const [Text('Armadura')],
+                        ),
+                        Row(
+                          children: const [Text('Poder de Fogo')],
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
               const SizedBox(height: 10),
               Characteristics(
                 tittle: "Tipos de Dano",

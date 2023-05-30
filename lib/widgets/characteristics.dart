@@ -4,7 +4,7 @@ class Characteristics extends StatelessWidget {
   const Characteristics({super.key, required this.tittle, required this.item});
 
   final String tittle;
-  final Widget item;
+  final List<Widget> item;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,6 @@ class Characteristics extends StatelessWidget {
                 const EdgeInsets.only(left: 10, right: 10, bottom: 10),
             tilePadding: const EdgeInsets.only(left: 10, right: 5),
             title: Text(tittle, style: const TextStyle(fontSize: 18)),
-            children: [item]));
+            children: item));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:dtcharactersheet/widgets/characteristic_item.dart';
 import 'package:dtcharactersheet/widgets/characteristics.dart';
+import 'package:dtcharactersheet/widgets/mult_line_text_field.dart';
 import 'package:flutter/material.dart';
 
 class CharacterSheetScreen extends StatefulWidget {
@@ -44,6 +45,8 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                 ),
               ),
               SizedBox(height: 10),
+
+              // Características
               Characteristics(tittle: 'Características', item: [
                 CharacteristicItem(textItem: 'Força'),
                 CharacteristicItem(textItem: 'Habilidade'),
@@ -52,11 +55,15 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                 CharacteristicItem(textItem: 'Poder de Fogo')
               ]),
               SizedBox(height: 10),
+
+              // Tipos de Dano
               Characteristics(tittle: 'Tipos de Dano', item: [
                 CharacteristicItem(textItem: 'Força'),
                 CharacteristicItem(textItem: 'Poder de Fogo')
               ]),
               SizedBox(height: 10),
+
+              // Caminhos da Magia
               Characteristics(tittle: 'Caminhos da Magia', item: [
                 CharacteristicItem(textItem: "Água"),
                 CharacteristicItem(textItem: "Ar"),
@@ -66,13 +73,37 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                 CharacteristicItem(textItem: "Trevas")
               ]),
               SizedBox(height: 10),
-              Characteristics(tittle: 'Desvantagens', item: []),
+
+              // Vantagens
+              Characteristics(tittle: 'Vantagens', item: [MultLineTextField()]),
               SizedBox(height: 10),
-              Characteristics(tittle: 'Magias Conhecidas', item: []),
+
+              // Desvantagens
+              Characteristics(
+                tittle: 'Desvantagens',
+                item: [MultLineTextField()],
+              ),
               SizedBox(height: 10),
-              Characteristics(tittle: 'Dinheiro e Itens', item: []),
+
+              // Magias Conhecidas
+              Characteristics(
+                tittle: 'Magias Conhecidas',
+                item: [MultLineTextField()],
+              ),
               SizedBox(height: 10),
-              Characteristics(tittle: 'História', item: []),
+
+              // Dinheiro e Itens
+              Characteristics(
+                tittle: 'Dinheiro e Itens',
+                item: [MultLineTextField()],
+              ),
+              SizedBox(height: 10),
+
+              // História
+              Characteristics(
+                tittle: 'História',
+                item: [MultLineTextField()],
+              ),
             ],
           ),
         ),

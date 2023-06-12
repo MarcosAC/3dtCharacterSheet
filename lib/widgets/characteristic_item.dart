@@ -14,7 +14,7 @@ class CharacteristicItem extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.remove_circle),
+            icon: const Icon(Icons.remove_circle, color: Colors.red),
           ),
           const SizedBox(
             width: 100,
@@ -30,7 +30,7 @@ class CharacteristicItem extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.add_circle),
+            icon: const Icon(Icons.add_circle, color: Colors.blue),
           ),
         ],
       )

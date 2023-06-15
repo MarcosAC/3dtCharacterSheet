@@ -42,7 +42,9 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               onChanged: (value) {
-                _counter = int.tryParse(_itemTextController.text)!;
+                if (_itemTextController.text.isEmpty) {
+                  _counter = int.tryParse(_itemTextController.text = '0')!;
+                }
               },
               decoration: const InputDecoration(
                 contentPadding: EdgeInsets.all(10),

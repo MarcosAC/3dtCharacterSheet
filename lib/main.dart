@@ -13,7 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [ChangeNotifierProvider(create: (_) => Character())],
+        providers: [
+          ChangeNotifierProvider(
+              create: (_) => Character('', '', '', '', '', '', '', '', 0, 0, 0))
+        ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(

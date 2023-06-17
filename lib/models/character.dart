@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 class Character extends ChangeNotifier {
   final String name;
-  final String race;
-  final String characterClass;
   final String advantage;
   final String disadvantage;
   final String spells;
@@ -15,8 +13,6 @@ class Character extends ChangeNotifier {
 
   Character(
       this.name,
-      this.race,
-      this.characterClass,
       this.advantage,
       this.disadvantage,
       this.spells,

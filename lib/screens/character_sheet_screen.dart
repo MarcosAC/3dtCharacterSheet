@@ -1,6 +1,7 @@
 import 'package:dtcharactersheet/widgets/characteristic_item.dart';
 import 'package:dtcharactersheet/widgets/characteristics.dart';
 import 'package:dtcharactersheet/widgets/mult_line_text_field.dart';
+import 'package:dtcharactersheet/widgets/text_field_custom.dart';
 import 'package:flutter/material.dart';
 
 class CharacterSheetScreen extends StatefulWidget {
@@ -35,13 +36,8 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: "Nome",
-                      border: InputBorder.none,
-                    ),
-                  ),
+                  padding: EdgeInsets.all(10),
+                  child: TextFieldCustom(label: 'Nome'),
                 ),
               ),
               SizedBox(height: 10),
@@ -57,9 +53,12 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               SizedBox(height: 10),
 
               // Tipos de Dano
+
               Characteristics(tittle: 'Tipos de Dano', item: [
-                CharacteristicItem(textItem: 'Força'),
-                CharacteristicItem(textItem: 'Poder de Fogo')
+                SizedBox(height: 5),
+                TextFieldCustom(label: 'Força'),
+                SizedBox(height: 10),
+                TextFieldCustom(label: 'Poder de Fogo')
               ]),
               SizedBox(height: 10),
 

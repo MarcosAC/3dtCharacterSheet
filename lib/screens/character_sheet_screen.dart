@@ -53,7 +53,6 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               SizedBox(height: 10),
 
               // Tipos de Dano
-
               Characteristics(tittle: 'Tipos de Dano', item: [
                 SizedBox(height: 5),
                 TextFieldCustom(label: 'Força'),
@@ -62,14 +61,31 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               ]),
               SizedBox(height: 10),
 
+              // Experiência
+              Characteristics(
+                  tittle: 'Experiência',
+                  item: [CharacteristicItem(textItem: 'Experiência')]),
+              SizedBox(height: 10),
+
+              Characteristics(
+                  tittle: 'Pontos de Vida',
+                  item: [CharacteristicItem(textItem: 'Pontos de Vida')]),
+              SizedBox(height: 10),
+
+              // Pontos de Magia
+              Characteristics(
+                  tittle: 'Pontos de Magia',
+                  item: [CharacteristicItem(textItem: 'Pontos de Magia')]),
+              SizedBox(height: 10),
+
               // Caminhos da Magia
               Characteristics(tittle: 'Caminhos da Magia', item: [
-                CharacteristicItem(textItem: "Água"),
-                CharacteristicItem(textItem: "Ar"),
-                CharacteristicItem(textItem: "Fogo"),
-                CharacteristicItem(textItem: "Luz"),
-                CharacteristicItem(textItem: "Terra"),
-                CharacteristicItem(textItem: "Trevas")
+                CharacteristicItem(textItem: 'Água'),
+                CharacteristicItem(textItem: 'Ar'),
+                CharacteristicItem(textItem: 'Fogo'),
+                CharacteristicItem(textItem: 'Luz'),
+                CharacteristicItem(textItem: 'Terra'),
+                CharacteristicItem(textItem: 'Trevas')
               ]),
               SizedBox(height: 10),
 

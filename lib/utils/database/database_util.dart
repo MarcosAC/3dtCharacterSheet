@@ -10,7 +10,7 @@ class DataBaseUtil {
       onCreate: (db, version) {
         return db.execute(
           'CREATE TABLE characters ('
-          'id TEXT PRIMARY KEY, '
+          'id INTEGER PRIMARY KEY, '
           'name TEXT, '
           'advantage TEXT, '
           'disadvantage TEXT, '

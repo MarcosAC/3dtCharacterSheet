@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Character extends ChangeNotifier {
+  final int id;
   final String name;
   final String advantage;
   final String disadvantage;
@@ -12,6 +13,7 @@ class Character extends ChangeNotifier {
   final int magicPoints;
 
   Character(
+      this.id,
       this.name,
       this.advantage,
       this.disadvantage,

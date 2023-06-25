@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Character {
   final int id;
   final String name;
@@ -21,4 +23,19 @@ class Character {
       required this.healthPoints,
       required this.experience,
       required this.magicPoints});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': Random().nextDouble(),
+      'name': name,
+      'advantage': advantage,
+      'disadvantage': disadvantage,
+      'spells': spells,
+      'moneyItems': moneyItems,
+      'history': history,
+      'healthPoints': healthPoints,
+      'experience': experience,
+      'magicPoints': magicPoints,
+    };
+  }
 }

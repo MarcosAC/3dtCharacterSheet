@@ -1,8 +1,13 @@
+import 'dart:math';
+
+import 'package:dtcharactersheet/models/character.dart';
+import 'package:dtcharactersheet/providers/character_provider.dart';
 import 'package:dtcharactersheet/widgets/characteristic_item.dart';
 import 'package:dtcharactersheet/widgets/characteristics.dart';
 import 'package:dtcharactersheet/widgets/mult_line_text_field.dart';
 import 'package:dtcharactersheet/widgets/text_field_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CharacterSheetScreen extends StatefulWidget {
   const CharacterSheetScreen({super.key});
@@ -14,6 +19,28 @@ class CharacterSheetScreen extends StatefulWidget {
 class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
   bool isVisible = false;
 
+  final TextEditingController _nomeController = TextEditingController();
+  final TextEditingController _forcaController = TextEditingController();
+  final TextEditingController _habilidadeController = TextEditingController();
+  final TextEditingController _resistenciaController = TextEditingController();
+  final TextEditingController _armaduraController = TextEditingController();
+  final TextEditingController _poderDeFogoController = TextEditingController();
+  final TextEditingController _experienciaContreller = TextEditingController();
+  final TextEditingController _pontosDeVidaController = TextEditingController();
+  final TextEditingController _pontoDeMagiaController = TextEditingController();
+  final TextEditingController _aguaController = TextEditingController();
+  final TextEditingController _arController = TextEditingController();
+  final TextEditingController _fogoController = TextEditingController();
+  final TextEditingController _luzController = TextEditingController();
+  final TextEditingController _terraController = TextEditingController();
+  final TextEditingController _trevasController = TextEditingController();
+  final TextEditingController _vantagemController = TextEditingController();
+  final TextEditingController _desvantagemController = TextEditingController();
+  final TextEditingController _magiasController = TextEditingController();
+  final TextEditingController _dinheiroItemsController =
+      TextEditingController();
+  final TextEditingController _historiaController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +49,24 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
         titleTextStyle: const TextStyle(fontSize: 17),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.save))
+          IconButton(
+              onPressed: () {
+                Character character = Character(
+                  id: Random().nextDouble().toInt(),
+                  name: _nomeController.text,
+                  advantage: _vantagemController.text,
+                  disadvantage: _desvantagemController.text,
+                  spells: _magiasController.text,
+                  moneyItems: _dinheiroItemsController.text,
+                  history: _historiaController.text,
+                  healthPoints: int.parse(_pontosDeVidaController.text),
+                  experience: int.parse(_experienciaContreller.text),
+                  magicPoints: int.parse(_pontoDeMagiaController.text),
+                );
+                Provider.of<CharacterProvider>(context, listen: false)
+                    .addCharacter(character);
+              },
+              icon: const Icon(Icons.save))
         ],
       ),
       body: SingleChildScrollView(
@@ -30,94 +74,146 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const [
+            children: [
               Card(
                 elevation: 1,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: TextFieldCustom(label: 'Nome'),
+                  padding: const EdgeInsets.all(10),
+                  child: TextFieldCustom(
+                    label: 'Nome',
+                    textController: _nomeController,
+                  ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Características
               Characteristics(tittle: 'Características', item: [
-                CharacteristicItem(textItem: 'Força'),
-                CharacteristicItem(textItem: 'Habilidade'),
-                CharacteristicItem(textItem: 'Resitência'),
-                CharacteristicItem(textItem: 'Armadura'),
-                CharacteristicItem(textItem: 'Poder de Fogo')
+                CharacteristicItem(
+                  textItem: 'Força',
+                  itemTextController: _forcaController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Habilidade',
+                  itemTextController: _habilidadeController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Resitência',
+                  itemTextController: _resistenciaController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Armadura',
+                  itemTextController: _armaduraController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Poder de Fogo',
+                  itemTextController: _poderDeFogoController,
+                )
               ]),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Tipos de Dano
-              Characteristics(tittle: 'Tipos de Dano', item: [
+              const Characteristics(tittle: 'Tipos de Dano', item: [
                 SizedBox(height: 5),
                 TextFieldCustom(label: 'Força'),
                 SizedBox(height: 10),
                 TextFieldCustom(label: 'Poder de Fogo')
               ]),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Experiência
-              Characteristics(
-                  tittle: 'Experiência',
-                  item: [CharacteristicItem(textItem: 'Experiência')]),
-              SizedBox(height: 10),
+              Characteristics(tittle: 'Experiência', item: [
+                CharacteristicItem(
+                  textItem: 'Experiência',
+                  itemTextController: _experienciaContreller,
+                )
+              ]),
+              const SizedBox(height: 10),
 
-              Characteristics(
-                  tittle: 'Pontos de Vida',
-                  item: [CharacteristicItem(textItem: 'Pontos de Vida')]),
-              SizedBox(height: 10),
+              Characteristics(tittle: 'Pontos de Vida', item: [
+                CharacteristicItem(
+                  textItem: 'Pontos de Vida',
+                  itemTextController: _pontosDeVidaController,
+                )
+              ]),
+              const SizedBox(height: 10),
 
               // Pontos de Magia
-              Characteristics(
-                  tittle: 'Pontos de Magia',
-                  item: [CharacteristicItem(textItem: 'Pontos de Magia')]),
-              SizedBox(height: 10),
+              Characteristics(tittle: 'Pontos de Magia', item: [
+                CharacteristicItem(
+                  textItem: 'Pontos de Magia',
+                  itemTextController: _pontoDeMagiaController,
+                )
+              ]),
+              const SizedBox(height: 10),
 
               // Caminhos da Magia
               Characteristics(tittle: 'Caminhos da Magia', item: [
-                CharacteristicItem(textItem: 'Água'),
-                CharacteristicItem(textItem: 'Ar'),
-                CharacteristicItem(textItem: 'Fogo'),
-                CharacteristicItem(textItem: 'Luz'),
-                CharacteristicItem(textItem: 'Terra'),
-                CharacteristicItem(textItem: 'Trevas')
+                CharacteristicItem(
+                  textItem: 'Água',
+                  itemTextController: _aguaController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Ar',
+                  itemTextController: _arController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Fogo',
+                  itemTextController: _fogoController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Luz',
+                  itemTextController: _luzController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Terra',
+                  itemTextController: _terraController,
+                ),
+                CharacteristicItem(
+                  textItem: 'Trevas',
+                  itemTextController: _trevasController,
+                )
               ]),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Vantagens
-              Characteristics(tittle: 'Vantagens', item: [MultLineTextField()]),
-              SizedBox(height: 10),
+              Characteristics(
+                tittle: 'Vantagens',
+                item: [MultLineTextField(textController: _vantagemController)],
+              ),
+              const SizedBox(height: 10),
 
               // Desvantagens
               Characteristics(
                 tittle: 'Desvantagens',
-                item: [MultLineTextField()],
+                item: [
+                  MultLineTextField(textController: _desvantagemController)
+                ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Magias Conhecidas
               Characteristics(
                 tittle: 'Magias Conhecidas',
-                item: [MultLineTextField()],
+                item: [MultLineTextField(textController: _magiasController)],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // Dinheiro e Itens
               Characteristics(
                 tittle: 'Dinheiro e Itens',
-                item: [MultLineTextField()],
+                item: [
+                  MultLineTextField(textController: _dinheiroItemsController)
+                ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // História
               Characteristics(
                 tittle: 'História',
-                item: [MultLineTextField()],
+                item: [MultLineTextField(textController: _historiaController)],
               ),
             ],
           ),

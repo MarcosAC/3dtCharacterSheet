@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextFieldCustom extends StatefulWidget {
-  const TextFieldCustom({super.key, this.label});
+  const TextFieldCustom({super.key, this.label, this.textController});
 
   final String? label;
+  final TextEditingController? textController;
 
   @override
   State<TextFieldCustom> createState() => _TextFieldCustomState();
@@ -15,6 +16,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
     return SizedBox(
       height: 35,
       child: TextField(
+        controller: widget.textController,
         decoration: InputDecoration(
           labelText: widget.label,
           contentPadding: const EdgeInsets.all(10),

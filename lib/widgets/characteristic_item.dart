@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 
 class CharacteristicItem extends StatefulWidget {
-  const CharacteristicItem({super.key, required this.textItem});
+  CharacteristicItem({
+    super.key,
+    required this.textItem,
+    required TextEditingController itemTextController,
+  });
 
   final String textItem;
+  final TextEditingController itemTextController = TextEditingController();
 
   @override
   State<CharacteristicItem> createState() => _CharacteristicItemState();
 }
 
 class _CharacteristicItemState extends State<CharacteristicItem> {
-  final _itemTextController = TextEditingController();
   int _counter = 0;
 
   @override
   void initState() {
     super.initState();
-    _itemTextController.text = '$_counter';
+    widget.itemTextController.text = '$_counter';
   }
 
   @override
@@ -38,12 +42,13 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
             width: 100,
             height: 35,
             child: TextField(
-              controller: _itemTextController,
+              controller: widget.itemTextController,
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               onChanged: (value) {
-                if (_itemTextController.text.isEmpty) {
-                  _counter = int.tryParse(_itemTextController.text = '0')!;
+                if (widget.itemTextController.text.isEmpty) {
+                  _counter =
+                      int.tryParse(widget.itemTextController.text = '0')!;
                 }
               },
               decoration: const InputDecoration(
@@ -67,14 +72,14 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
   void _incrementCounter() {
     setState(() {
       _counter++;
-      _itemTextController.text = '$_counter';
+      widget.itemTextController.text = '$_counter';
     });
   }
 
   void _decrementCounter() {
     setState(() {
       _counter--;
-      _itemTextController.text = '$_counter';
+      widget.itemTextController.text = '$_counter';
     });
   }
 }

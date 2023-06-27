@@ -10,7 +10,7 @@ class DataBaseUtil {
       onCreate: (db, version) {
         return db.execute(
           'CREATE TABLE characters ('
-          'id INTEGER PRIMARY KEY, '
+          'id INTEGER PRIMARY KEY AUTOINCREMENT, '
           'name TEXT, '
           'advantage TEXT, '
           'disadvantage TEXT, '
@@ -24,17 +24,6 @@ class DataBaseUtil {
       },
       version: 1,
     );
-    print('CREATE TABLE characters ('
-        'id INTEGER PRIMARY KEY, '
-        'name TEXT, '
-        'advantage TEXT, '
-        'disadvantage TEXT, '
-        'spells TEXT, '
-        'moneyItems TEXT, '
-        'history TEXT, '
-        'healthPoints INTEGER, '
-        'experience INTEGER, '
-        'magicPoints INTEGER)');
   }
 
   static Future<void> insert(String table, Map<String, dynamic> data) async {
@@ -45,5 +34,10 @@ class DataBaseUtil {
       data,
       conflictAlgorithm: db.ConflictAlgorithm.replace,
     );
+  }
+
+  static Future<List<Map<String, dynamic>>> getAll(String table) async {
+    final dataBase = await DataBaseUtil.database();
+    return dataBase.query(table);
   }
 }

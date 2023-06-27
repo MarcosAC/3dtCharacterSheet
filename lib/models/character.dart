@@ -1,7 +1,5 @@
-import 'dart:math';
-
 class Character {
-  final int id;
+  final int? id;
   final String name;
   final String advantage;
   final String disadvantage;
@@ -13,7 +11,7 @@ class Character {
   final int magicPoints;
 
   Character(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.advantage,
       required this.disadvantage,
@@ -26,7 +24,6 @@ class Character {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': Random().nextDouble(),
       'name': name,
       'advantage': advantage,
       'disadvantage': disadvantage,

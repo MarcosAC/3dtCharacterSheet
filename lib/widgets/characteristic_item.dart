@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CharacteristicItem extends StatefulWidget {
-  CharacteristicItem({
-    super.key,
-    required this.textItem,
-    required TextEditingController itemTextController,
-  });
+  const CharacteristicItem(
+      {super.key, required this.textItem, required this.itemTextController});
 
   final String textItem;
-  final TextEditingController itemTextController = TextEditingController();
+  final TextEditingController? itemTextController;
 
   @override
   State<CharacteristicItem> createState() => _CharacteristicItemState();
@@ -20,7 +17,7 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
   @override
   void initState() {
     super.initState();
-    widget.itemTextController.text = '$_counter';
+    widget.itemTextController!.text = '$_counter';
   }
 
   @override
@@ -46,9 +43,9 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               onChanged: (value) {
-                if (widget.itemTextController.text.isEmpty) {
+                if (widget.itemTextController!.text.isEmpty) {
                   _counter =
-                      int.tryParse(widget.itemTextController.text = '0')!;
+                      int.tryParse(widget.itemTextController!.text = '0')!;
                 }
               },
               decoration: const InputDecoration(
@@ -72,14 +69,14 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
   void _incrementCounter() {
     setState(() {
       _counter++;
-      widget.itemTextController.text = '$_counter';
+      widget.itemTextController!.text = '$_counter';
     });
   }
 
   void _decrementCounter() {
     setState(() {
       _counter--;
-      widget.itemTextController.text = '$_counter';
+      widget.itemTextController!.text = '$_counter';
     });
   }
 }

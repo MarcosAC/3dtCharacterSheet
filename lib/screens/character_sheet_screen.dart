@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dtcharactersheet/models/character.dart';
 import 'package:dtcharactersheet/providers/character_provider.dart';
 import 'package:dtcharactersheet/widgets/characteristic_item.dart';
@@ -48,11 +46,15 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
         title: const Text("Ficha do Personagem - 3D&T"),
         titleTextStyle: const TextStyle(fontSize: 17),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+          IconButton(
+              onPressed: () {
+                Provider.of<CharacterProvider>(context, listen: false)
+                    .loadCharacters();
+              },
+              icon: const Icon(Icons.add)),
           IconButton(
               onPressed: () {
                 Character character = Character(
-                  id: Random().nextDouble().toInt(),
                   name: _nomeController.text,
                   advantage: _vantagemController.text,
                   disadvantage: _desvantagemController.text,
@@ -132,6 +134,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               ]),
               const SizedBox(height: 10),
 
+              // Pontos de Vida
               Characteristics(tittle: 'Pontos de Vida', item: [
                 CharacteristicItem(
                   textItem: 'Pontos de Vida',

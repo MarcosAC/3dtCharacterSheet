@@ -68,6 +68,33 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   healthPoints: int.parse(_pontosDeVidaController.text),
                   experience: int.parse(_experienciaController.text),
                   magicPoints: int.parse(_pontoDeMagiaController.text),
+                  ability: int.parse(_abilityController.text),
+                  armor: int.parse(_armorController.text),
+                  firePower: int.parse(_firePowersController.text),
+                  force: int.parse(_forceController.text),
+                  resistance: int.parse(_resistanceController.text),
+                  water: int.parse(_waterController.text),
+                  air: int.parse(_airController.text),
+                  fire: int.parse(_fireController.text),
+                  light: int.parse(_lightController.text),
+                  earth: int.parse(_earthController.text),
+                  darkness: int.parse(_darknessController.text),
+                  forceDamage: _forceDamageController.text,
+                  firePowerDamage: _firePowerDamageController.text,
+                );
+                Provider.of<CharacterProvider>(context, listen: false)
+                    .addCharacter(character);
+
+                /*Character character = Character(
+                  name: _nomeController.text,
+                  advantage: _vantagemController.text,
+                  disadvantage: _desvantagemController.text,
+                  spells: _magiasController.text,
+                  moneyItems: _dinheiroItemsController.text,
+                  history: _historiaController.text,
+                  healthPoints: int.parse(_pontosDeVidaController.text),
+                  experience: int.parse(_experienciaController.text),
+                  magicPoints: int.parse(_pontoDeMagiaController.text),
                   characteristics: CharacterTraits(
                     ability: int.parse(_abilityController.text),
                     armor: int.parse(_armorController.text),
@@ -87,9 +114,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                     force: _forceDamageController.text,
                     firePower: _firePowerDamageController.text,
                   ),
-                );
-                Provider.of<CharacterProvider>(context, listen: false)
-                    .addCharacter(character);
+                );*/
               },
               icon: const Icon(Icons.save))
         ],

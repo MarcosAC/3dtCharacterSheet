@@ -19,7 +19,7 @@ class DataBaseUtil {
           'history TEXT, '
           'healthPoints INTEGER, '
           'experience INTEGER, '
-          'magicPoints INTEGER)',
+          'magicPoints INTEGER,)',
         );
       },
       version: 1,

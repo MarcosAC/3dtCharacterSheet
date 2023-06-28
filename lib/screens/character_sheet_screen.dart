@@ -1,4 +1,7 @@
 import 'package:dtcharactersheet/models/character.dart';
+import 'package:dtcharactersheet/models/character_traits.dart';
+import 'package:dtcharactersheet/models/damage_types.dart';
+import 'package:dtcharactersheet/models/ways_of_magic.dart';
 import 'package:dtcharactersheet/providers/character_provider.dart';
 import 'package:dtcharactersheet/widgets/characteristic_item.dart';
 import 'package:dtcharactersheet/widgets/characteristics.dart';
@@ -17,27 +20,28 @@ class CharacterSheetScreen extends StatefulWidget {
 class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
   bool isVisible = false;
 
-  final TextEditingController _nomeController = TextEditingController();
-  final TextEditingController _forcaController = TextEditingController();
-  final TextEditingController _habilidadeController = TextEditingController();
-  final TextEditingController _resistenciaController = TextEditingController();
-  final TextEditingController _armaduraController = TextEditingController();
-  final TextEditingController _poderDeFogoController = TextEditingController();
-  final TextEditingController _experienciaContreller = TextEditingController();
-  final TextEditingController _pontosDeVidaController = TextEditingController();
-  final TextEditingController _pontoDeMagiaController = TextEditingController();
-  final TextEditingController _aguaController = TextEditingController();
-  final TextEditingController _arController = TextEditingController();
-  final TextEditingController _fogoController = TextEditingController();
-  final TextEditingController _luzController = TextEditingController();
-  final TextEditingController _terraController = TextEditingController();
-  final TextEditingController _trevasController = TextEditingController();
-  final TextEditingController _vantagemController = TextEditingController();
-  final TextEditingController _desvantagemController = TextEditingController();
-  final TextEditingController _magiasController = TextEditingController();
-  final TextEditingController _dinheiroItemsController =
-      TextEditingController();
-  final TextEditingController _historiaController = TextEditingController();
+  final _nomeController = TextEditingController();
+  final _forceController = TextEditingController();
+  final _abilityController = TextEditingController();
+  final _resistanceController = TextEditingController();
+  final _armorController = TextEditingController();
+  final _firePowersController = TextEditingController();
+  final _experienciaController = TextEditingController();
+  final _pontosDeVidaController = TextEditingController();
+  final _pontoDeMagiaController = TextEditingController();
+  final _vantagemController = TextEditingController();
+  final _desvantagemController = TextEditingController();
+  final _magiasController = TextEditingController();
+  final _dinheiroItemsController = TextEditingController();
+  final _historiaController = TextEditingController();
+  final _waterController = TextEditingController();
+  final _airController = TextEditingController();
+  final _fireController = TextEditingController();
+  final _lightController = TextEditingController();
+  final _earthController = TextEditingController();
+  final _darknessController = TextEditingController();
+  final _forceDamageController = TextEditingController();
+  final _firePowerDamageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +66,27 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   moneyItems: _dinheiroItemsController.text,
                   history: _historiaController.text,
                   healthPoints: int.parse(_pontosDeVidaController.text),
-                  experience: int.parse(_experienciaContreller.text),
+                  experience: int.parse(_experienciaController.text),
                   magicPoints: int.parse(_pontoDeMagiaController.text),
+                  characteristics: CharacterTraits(
+                    ability: int.parse(_abilityController.text),
+                    armor: int.parse(_armorController.text),
+                    firePower: int.parse(_firePowersController.text),
+                    force: int.parse(_forceController.text),
+                    resistance: int.parse(_resistanceController.text),
+                  ),
+                  waysOfMagic: WaysOfMagic(
+                    water: int.parse(_waterController.text),
+                    air: int.parse(_airController.text),
+                    fire: int.parse(_fireController.text),
+                    light: int.parse(_lightController.text),
+                    earth: int.parse(_earthController.text),
+                    darkness: int.parse(_darknessController.text),
+                  ),
+                  damageTypes: DamageTypes(
+                    force: _forceDamageController.text,
+                    firePower: _firePowerDamageController.text,
+                  ),
                 );
                 Provider.of<CharacterProvider>(context, listen: false)
                     .addCharacter(character);
@@ -95,33 +118,39 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               Characteristics(tittle: 'Características', item: [
                 CharacteristicItem(
                   textItem: 'Força',
-                  itemTextController: _forcaController,
+                  itemTextController: _forceController,
                 ),
                 CharacteristicItem(
                   textItem: 'Habilidade',
-                  itemTextController: _habilidadeController,
+                  itemTextController: _abilityController,
                 ),
                 CharacteristicItem(
                   textItem: 'Resitência',
-                  itemTextController: _resistenciaController,
+                  itemTextController: _resistanceController,
                 ),
                 CharacteristicItem(
                   textItem: 'Armadura',
-                  itemTextController: _armaduraController,
+                  itemTextController: _armorController,
                 ),
                 CharacteristicItem(
                   textItem: 'Poder de Fogo',
-                  itemTextController: _poderDeFogoController,
+                  itemTextController: _firePowersController,
                 )
               ]),
               const SizedBox(height: 10),
 
               // Tipos de Dano
-              const Characteristics(tittle: 'Tipos de Dano', item: [
-                SizedBox(height: 5),
-                TextFieldCustom(label: 'Força'),
-                SizedBox(height: 10),
-                TextFieldCustom(label: 'Poder de Fogo')
+              Characteristics(tittle: 'Tipos de Dano', item: [
+                const SizedBox(height: 5),
+                TextFieldCustom(
+                  label: 'Força',
+                  textController: _forceDamageController,
+                ),
+                const SizedBox(height: 10),
+                TextFieldCustom(
+                  label: 'Poder de Fogo',
+                  textController: _firePowerDamageController,
+                )
               ]),
               const SizedBox(height: 10),
 
@@ -129,7 +158,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               Characteristics(tittle: 'Experiência', item: [
                 CharacteristicItem(
                   textItem: 'Experiência',
-                  itemTextController: _experienciaContreller,
+                  itemTextController: _experienciaController,
                 )
               ]),
               const SizedBox(height: 10),
@@ -156,27 +185,27 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               Characteristics(tittle: 'Caminhos da Magia', item: [
                 CharacteristicItem(
                   textItem: 'Água',
-                  itemTextController: _aguaController,
+                  itemTextController: _waterController,
                 ),
                 CharacteristicItem(
                   textItem: 'Ar',
-                  itemTextController: _arController,
+                  itemTextController: _airController,
                 ),
                 CharacteristicItem(
                   textItem: 'Fogo',
-                  itemTextController: _fogoController,
+                  itemTextController: _fireController,
                 ),
                 CharacteristicItem(
                   textItem: 'Luz',
-                  itemTextController: _luzController,
+                  itemTextController: _lightController,
                 ),
                 CharacteristicItem(
                   textItem: 'Terra',
-                  itemTextController: _terraController,
+                  itemTextController: _earthController,
                 ),
                 CharacteristicItem(
                   textItem: 'Trevas',
-                  itemTextController: _trevasController,
+                  itemTextController: _darknessController,
                 )
               ]),
               const SizedBox(height: 10),

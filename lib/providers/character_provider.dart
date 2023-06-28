@@ -15,16 +15,20 @@ class CharacterProvider with ChangeNotifier {
 
     _characters = listCharacter
         .map((character) => Character(
-            id: character['id'],
-            name: character['name'],
-            advantage: character['advantage'],
-            disadvantage: character['disadvantage'],
-            spells: character['spells'],
-            moneyItems: character['moneyItems'],
-            history: character['history'],
-            healthPoints: character['healthPoints'],
-            experience: character['experience'],
-            magicPoints: character['magicPoints']))
+              id: character['id'],
+              name: character['name'],
+              advantage: character['advantage'],
+              disadvantage: character['disadvantage'],
+              spells: character['spells'],
+              moneyItems: character['moneyItems'],
+              history: character['history'],
+              healthPoints: character['healthPoints'],
+              experience: character['experience'],
+              magicPoints: character['magicPoints'],
+              characteristics: character['characteristics'],
+              waysOfMagic: character['waysOfMagic'],
+              damageTypes: character['damageTypes'],
+            ))
         .toList();
 
     notifyListeners();

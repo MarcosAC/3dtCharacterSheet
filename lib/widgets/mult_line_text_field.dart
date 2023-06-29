@@ -18,8 +18,9 @@ class _MultLineTextFieldState extends State<MultLineTextField> {
           filled: true,
           fillColor: Colors.grey[300],
           border: const OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.all(Radius.circular(10))),
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
         ),
         maxLines: null);
   }

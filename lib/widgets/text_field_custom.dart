@@ -20,8 +20,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
         decoration: InputDecoration(
           labelText: widget.label,
           contentPadding: const EdgeInsets.all(10),
-          border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5))),
+          border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
         ),
       ),
     );

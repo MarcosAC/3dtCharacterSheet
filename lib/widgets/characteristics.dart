@@ -10,12 +10,10 @@ class Characteristics extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 1,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10))),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
       child: ExpansionTile(
           expandedAlignment: Alignment.topLeft,
-          childrenPadding:
-              const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          childrenPadding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
           tilePadding: const EdgeInsets.only(left: 10, right: 5),
           title: Text(tittle, style: const TextStyle(fontSize: 18)),
           children: item),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CharacteristicItem extends StatefulWidget {
-  const CharacteristicItem(
-      {super.key, required this.textItem, required this.itemTextController});
+  const CharacteristicItem({super.key, required this.textItem, required this.itemTextController});
 
   final String textItem;
   final TextEditingController? itemTextController;
@@ -23,9 +22,7 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Padding(
-          padding: const EdgeInsets.only(bottom: 3),
-          child: Text(widget.textItem)),
+      Padding(padding: const EdgeInsets.only(bottom: 3), child: Text(widget.textItem)),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -44,14 +41,12 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
               textAlign: TextAlign.center,
               onChanged: (value) {
                 if (widget.itemTextController!.text.isEmpty) {
-                  _counter =
-                      int.tryParse(widget.itemTextController!.text = '0')!;
+                  _counter = int.tryParse(widget.itemTextController!.text = '0')!;
                 }
               },
               decoration: const InputDecoration(
                 contentPadding: EdgeInsets.all(10),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
               ),
             ),
           ),

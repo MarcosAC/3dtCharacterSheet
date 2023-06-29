@@ -1,7 +1,4 @@
 import 'package:dtcharactersheet/models/character.dart';
-import 'package:dtcharactersheet/models/character_traits.dart';
-import 'package:dtcharactersheet/models/damage_types.dart';
-import 'package:dtcharactersheet/models/ways_of_magic.dart';
 import 'package:dtcharactersheet/providers/character_provider.dart';
 import 'package:dtcharactersheet/widgets/characteristic_item.dart';
 import 'package:dtcharactersheet/widgets/characteristics.dart';
@@ -52,8 +49,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                Provider.of<CharacterProvider>(context, listen: false)
-                    .loadCharacters();
+                Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
               },
               icon: const Icon(Icons.add)),
           IconButton(
@@ -82,8 +78,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   forceDamage: _forceDamageController.text,
                   firePowerDamage: _firePowerDamageController.text,
                 );
-                Provider.of<CharacterProvider>(context, listen: false)
-                    .addCharacter(character);
+                Provider.of<CharacterProvider>(context, listen: false).addCharacter(character);
 
                 /*Character character = Character(
                   name: _nomeController.text,
@@ -127,8 +122,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
             children: [
               Card(
                 elevation: 1,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: TextFieldCustom(
@@ -245,9 +239,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               // Desvantagens
               Characteristics(
                 tittle: 'Desvantagens',
-                item: [
-                  MultLineTextField(textController: _desvantagemController)
-                ],
+                item: [MultLineTextField(textController: _desvantagemController)],
               ),
               const SizedBox(height: 10),
 
@@ -261,9 +253,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               // Dinheiro e Itens
               Characteristics(
                 tittle: 'Dinheiro e Itens',
-                item: [
-                  MultLineTextField(textController: _dinheiroItemsController)
-                ],
+                item: [MultLineTextField(textController: _dinheiroItemsController)],
               ),
               const SizedBox(height: 10),
 

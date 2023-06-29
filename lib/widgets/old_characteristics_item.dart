@@ -2,8 +2,11 @@ import 'package:dtcharactersheet/widgets/points.dart';
 import 'package:flutter/material.dart';
 
 class CharacteristicsItem extends StatelessWidget {
-  const CharacteristicsItem(
-      {super.key, required this.textItem, required this.points});
+  const CharacteristicsItem({
+    super.key,
+    required this.textItem,
+    required this.points,
+  });
 
   final String textItem;
   final int points;

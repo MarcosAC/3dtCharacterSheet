@@ -14,12 +14,6 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
   int _counter = 0;
 
   @override
-  void initState() {
-    super.initState();
-    widget.itemTextController!.text = '$_counter';
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,7 +37,9 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   if (widget.itemTextController!.text.isEmpty) {
-                    _counter = int.tryParse(widget.itemTextController!.text = '0')!;
+                    _counter = int.parse(widget.itemTextController!.text = '0');
+                  } else {
+                    _counter = int.parse(value);
                   }
                 },
                 decoration: const InputDecoration(

@@ -42,6 +42,27 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _forceController.text = '0';
+    _abilityController.text = '0';
+    _resistanceController.text = '0';
+    _armorController.text = '0';
+    _firePowersController.text = '0';
+    _experienciaController.text = '0';
+    _pontosDeVidaController.text = '0';
+    _pontoDeMagiaController.text = '0';
+    _vantagemController.text = '0';
+    _desvantagemController.text = '0';
+    _magiasController.text = '0';
+    _dinheiroItemsController.text = _historiaController.text = '0';
+    _waterController.text = '0';
+    _airController.text = '0';
+    _fireController.text = '0';
+    _lightController.text = '0';
+    _earthController.text = '0';
+    _darknessController.text = '0';
+    _forceDamageController.text = '0';
+    _firePowerDamageController.text = '0';
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Ficha do Personagem - 3D&T"),
@@ -79,37 +100,6 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   experience: int.parse(_experienciaController.text),
                 );
                 Provider.of<CharacterProvider>(context, listen: false).addCharacter(character);
-
-                /*Character character = Character(
-                  name: _nomeController.text,
-                  advantage: _vantagemController.text,
-                  disadvantage: _desvantagemController.text,
-                  spells: _magiasController.text,
-                  moneyItems: _dinheiroItemsController.text,
-                  history: _historiaController.text,
-                  healthPoints: int.parse(_pontosDeVidaController.text),
-                  experience: int.parse(_experienciaController.text),
-                  magicPoints: int.parse(_pontoDeMagiaController.text),
-                  characteristics: CharacterTraits(
-                    ability: int.parse(_abilityController.text),
-                    armor: int.parse(_armorController.text),
-                    firePower: int.parse(_firePowersController.text),
-                    force: int.parse(_forceController.text),
-                    resistance: int.parse(_resistanceController.text),
-                  ),
-                  waysOfMagic: WaysOfMagic(
-                    water: int.parse(_waterController.text),
-                    air: int.parse(_airController.text),
-                    fire: int.parse(_fireController.text),
-                    light: int.parse(_lightController.text),
-                    earth: int.parse(_earthController.text),
-                    darkness: int.parse(_darknessController.text),
-                  ),
-                  damageTypes: DamageTypes(
-                    force: _forceDamageController.text,
-                    firePower: _firePowerDamageController.text,
-                  ),
-                );*/
               },
               icon: const Icon(Icons.save))
         ],
@@ -269,3 +259,35 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
     );
   }
 }
+
+/* PARA FINS HISTÓRICO
+Character character = Character(
+                  name: _nomeController.text,
+                  advantage: _vantagemController.text,
+                  disadvantage: _desvantagemController.text,
+                  spells: _magiasController.text,
+                  moneyItems: _dinheiroItemsController.text,
+                  history: _historiaController.text,
+                  healthPoints: int.parse(_pontosDeVidaController.text),
+                  experience: int.parse(_experienciaController.text),
+                  magicPoints: int.parse(_pontoDeMagiaController.text),
+                  characteristics: CharacterTraits(
+                    ability: int.parse(_abilityController.text),
+                    armor: int.parse(_armorController.text),
+                    firePower: int.parse(_firePowersController.text),
+                    force: int.parse(_forceController.text),
+                    resistance: int.parse(_resistanceController.text),
+                  ),
+                  waysOfMagic: WaysOfMagic(
+                    water: int.parse(_waterController.text),
+                    air: int.parse(_airController.text),
+                    fire: int.parse(_fireController.text),
+                    light: int.parse(_lightController.text),
+                    earth: int.parse(_earthController.text),
+                    darkness: int.parse(_darknessController.text),
+                  ),
+                  damageTypes: DamageTypes(
+                    force: _forceDamageController.text,
+                    firePower: _firePowerDamageController.text,
+                  ),
+                );*/

@@ -8,19 +8,19 @@ class Character {
   final int firePower;
   final int healthPoints;
   final int magicPoints;
-  final String forceDamage;
-  final String firePowerDamage;
+  final String? forceDamage;
+  final String? firePowerDamage;
   final int water;
   final int air;
   final int fire;
   final int light;
   final int earth;
   final int darkness;
-  final String advantage;
-  final String disadvantage;
-  final String spells;
-  final String moneyItems;
-  final String history;
+  final String? advantage;
+  final String? disadvantage;
+  final String? spells;
+  final String? moneyItems;
+  final String? history;
   final int experience;
 
   Character({

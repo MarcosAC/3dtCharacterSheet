@@ -1,5 +1,5 @@
-import 'package:sqflite/sqflite.dart' as db;
 import 'package:path/path.dart' as path;
+import 'package:sqflite/sqflite.dart' as db;
 
 class DataBaseUtil {
   static Future<db.Database> database() async {
@@ -12,29 +12,27 @@ class DataBaseUtil {
           'CREATE TABLE characters ('
           'id INTEGER PRIMARY KEY AUTOINCREMENT, '
           'name TEXT, '
-          'force: INTEGER, '
-          'ability: INTEGER, '
-          'resistance: INTEGER, '
-          'armor: INTEGER, '
-          'firePower: INTEGER, '
-          'healthPoints: INTEGER, '
-          'magicPoints: INTEGER, '
-          'forceDamage: TEXT, '
-          'firePowerDamage: TEXT, '
-          'water: INTEGER, '
-          'air: INTEGER, '
-          'fire: INTEGER, '
-          'light: INTEGER, '
-          'earth: INTEGER, '
-          'darkness:INTEGER, '
+          'force INTEGER, '
+          'ability INTEGER, '
+          'resistance INTEGER, '
+          'armor INTEGER, '
+          'firePower INTEGER, '
+          'healthPoints INTEGER, '
+          'magicPoints INTEGER, '
+          'forceDamage TEXT, '
+          'firePowerDamage TEXT, '
+          'water INTEGER, '
+          'air INTEGER, '
+          'fire INTEGER, '
+          'light INTEGER, '
+          'earth INTEGER, '
+          'darkness INTEGER, '
           'advantage TEXT, '
           'disadvantage TEXT, '
           'spells TEXT, '
           'moneyItems TEXT, '
           'history TEXT, '
-          'healthPoints INTEGER, '
-          'experience INTEGER, '
-          'magicPoints INTEGER,)',
+          'experience INTEGER)',
         );
       },
       version: 1,

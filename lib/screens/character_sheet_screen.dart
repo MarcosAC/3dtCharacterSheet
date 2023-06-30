@@ -23,22 +23,22 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
   final _resistanceController = TextEditingController();
   final _armorController = TextEditingController();
   final _firePowersController = TextEditingController();
-  final _experienciaController = TextEditingController();
-  final _pontosDeVidaController = TextEditingController();
-  final _pontoDeMagiaController = TextEditingController();
-  final _vantagemController = TextEditingController();
-  final _desvantagemController = TextEditingController();
-  final _magiasController = TextEditingController();
-  final _dinheiroItemsController = TextEditingController();
-  final _historiaController = TextEditingController();
+  final _healthPointsController = TextEditingController();
+  final _magicPointsController = TextEditingController();
+  final _forceDamageController = TextEditingController();
+  final _firePowerDamageController = TextEditingController();
   final _waterController = TextEditingController();
   final _airController = TextEditingController();
   final _fireController = TextEditingController();
   final _lightController = TextEditingController();
   final _earthController = TextEditingController();
   final _darknessController = TextEditingController();
-  final _forceDamageController = TextEditingController();
-  final _firePowerDamageController = TextEditingController();
+  final _advantageController = TextEditingController();
+  final _disadvantageController = TextEditingController();
+  final _spellsController = TextEditingController();
+  final _moneyController = TextEditingController();
+  final _historyController = TextEditingController();
+  final _experienceController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +46,16 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
     _abilityController.text = '0';
     _resistanceController.text = '0';
     _armorController.text = '0';
-    _firePowersController.text = '0';
-    _experienciaController.text = '0';
-    _pontosDeVidaController.text = '0';
-    _pontoDeMagiaController.text = '0';
-    _vantagemController.text = '0';
-    _desvantagemController.text = '0';
-    _magiasController.text = '0';
-    _dinheiroItemsController.text = _historiaController.text = '0';
+    _firePowersController.text = '0';    
+    _healthPointsController.text = '0';
+    _magicPointsController.text = '0';
     _waterController.text = '0';
     _airController.text = '0';
     _fireController.text = '0';
     _lightController.text = '0';
     _earthController.text = '0';
-    _darknessController.text = '0';
-    _forceDamageController.text = '0';
-    _firePowerDamageController.text = '0';
+    _darknessController.text = '0';  
+    _experienceController.text = '0';
 
     return Scaffold(
       appBar: AppBar(
@@ -82,8 +76,8 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   resistance: int.parse(_resistanceController.text),
                   armor: int.parse(_armorController.text),
                   firePower: int.parse(_firePowersController.text),
-                  healthPoints: int.parse(_pontosDeVidaController.text),
-                  magicPoints: int.parse(_pontoDeMagiaController.text),
+                  healthPoints: int.parse(_healthPointsController.text),
+                  magicPoints: int.parse(_magicPointsController.text),
                   forceDamage: _forceDamageController.text,
                   firePowerDamage: _firePowerDamageController.text,
                   water: int.parse(_waterController.text),
@@ -92,12 +86,12 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   light: int.parse(_lightController.text),
                   earth: int.parse(_earthController.text),
                   darkness: int.parse(_darknessController.text),
-                  advantage: _vantagemController.text,
-                  disadvantage: _desvantagemController.text,
-                  spells: _magiasController.text,
-                  moneyItems: _dinheiroItemsController.text,
-                  history: _historiaController.text,
-                  experience: int.parse(_experienciaController.text),
+                  advantage: _advantageController.text,
+                  disadvantage: _disadvantageController.text,
+                  spells: _spellsController.text,
+                  moneyItems: _moneyController.text,
+                  history: _historyController.text,
+                  experience: int.parse(_experienceController.text),
                 );
                 Provider.of<CharacterProvider>(context, listen: false).addCharacter(character);
               },
@@ -167,7 +161,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               Characteristics(tittle: 'Experiência', item: [
                 CharacteristicItem(
                   textItem: 'Experiência',
-                  itemTextController: _experienciaController,
+                  itemTextController: _experienceController,
                 )
               ]),
               const SizedBox(height: 10),
@@ -176,7 +170,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               Characteristics(tittle: 'Pontos de Vida', item: [
                 CharacteristicItem(
                   textItem: 'Pontos de Vida',
-                  itemTextController: _pontosDeVidaController,
+                  itemTextController: _healthPointsController,
                 )
               ]),
               const SizedBox(height: 10),
@@ -185,7 +179,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               Characteristics(tittle: 'Pontos de Magia', item: [
                 CharacteristicItem(
                   textItem: 'Pontos de Magia',
-                  itemTextController: _pontoDeMagiaController,
+                  itemTextController: _magicPointsController,
                 )
               ]),
               const SizedBox(height: 10),
@@ -222,35 +216,35 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               // Vantagens
               Characteristics(
                 tittle: 'Vantagens',
-                item: [MultLineTextField(textController: _vantagemController)],
+                item: [MultLineTextField(textController: _advantageController)],
               ),
               const SizedBox(height: 10),
 
               // Desvantagens
               Characteristics(
                 tittle: 'Desvantagens',
-                item: [MultLineTextField(textController: _desvantagemController)],
+                item: [MultLineTextField(textController: _disadvantageController)],
               ),
               const SizedBox(height: 10),
 
               // Magias Conhecidas
               Characteristics(
                 tittle: 'Magias Conhecidas',
-                item: [MultLineTextField(textController: _magiasController)],
+                item: [MultLineTextField(textController: _spellsController)],
               ),
               const SizedBox(height: 10),
 
               // Dinheiro e Itens
               Characteristics(
                 tittle: 'Dinheiro e Itens',
-                item: [MultLineTextField(textController: _dinheiroItemsController)],
+                item: [MultLineTextField(textController: _moneyController)],
               ),
               const SizedBox(height: 10),
 
               // História
               Characteristics(
                 tittle: 'História',
-                item: [MultLineTextField(textController: _historiaController)],
+                item: [MultLineTextField(textController: _historyController)],
               ),
             ],
           ),
@@ -263,14 +257,14 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
 /* PARA FINS HISTÓRICO
 Character character = Character(
                   name: _nomeController.text,
-                  advantage: _vantagemController.text,
-                  disadvantage: _desvantagemController.text,
-                  spells: _magiasController.text,
-                  moneyItems: _dinheiroItemsController.text,
-                  history: _historiaController.text,
-                  healthPoints: int.parse(_pontosDeVidaController.text),
-                  experience: int.parse(_experienciaController.text),
-                  magicPoints: int.parse(_pontoDeMagiaController.text),
+                  advantage: _advantageController.text,
+                  disadvantage: _disadvantageController.text,
+                  spells: _spellsController.text,
+                  moneyItems: _moneyController.text,
+                  history: _historyController.text,
+                  healthPoints: int.parse(_healthPointsController.text),
+                  experience: int.parse(_experienceController.text),
+                  magicPoints: int.parse(_magicPointsController.text),
                   characteristics: CharacterTraits(
                     ability: int.parse(_abilityController.text),
                     armor: int.parse(_armorController.text),

@@ -59,6 +59,7 @@ class Character {
       'firePower': firePower,
       'healthPoints': healthPoints,
       'magicPoints': magicPoints,
+      'forceDamage': forceDamage,
       'firePowerDamage': firePowerDamage,
       'water': water,
       'air': air,

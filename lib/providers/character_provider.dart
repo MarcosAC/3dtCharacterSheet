@@ -43,4 +43,8 @@ class CharacterProvider with ChangeNotifier {
 
     notifyListeners();
   }
+
+  int get itemsCount {
+    return _characters.length;
+  }
 }

@@ -46,7 +46,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
     _abilityController.text = '0';
     _resistanceController.text = '0';
     _armorController.text = '0';
-    _firePowersController.text = '0';    
+    _firePowersController.text = '0';
     _healthPointsController.text = '0';
     _magicPointsController.text = '0';
     _waterController.text = '0';
@@ -54,7 +54,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
     _fireController.text = '0';
     _lightController.text = '0';
     _earthController.text = '0';
-    _darknessController.text = '0';  
+    _darknessController.text = '0';
     _experienceController.text = '0';
 
     return Scaffold(
@@ -62,11 +62,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
         title: const Text("Ficha do Personagem - 3D&T"),
         titleTextStyle: const TextStyle(fontSize: 17),
         actions: [
-          IconButton(
-              onPressed: () {
-                Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
-              },
-              icon: const Icon(Icons.add)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
           IconButton(
               onPressed: () {
                 Character character = Character(
@@ -95,7 +91,13 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                 );
                 Provider.of<CharacterProvider>(context, listen: false).addCharacter(character);
               },
-              icon: const Icon(Icons.save))
+              icon: const Icon(Icons.save)),
+          IconButton(
+              onPressed: () {
+                Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
+              },
+              icon: const Icon(Icons.list))
+          //PopupMenuButton(itemBuilder: (BuildContext context) => <PopupMenuEntry>[]),
         ],
       ),
       body: SingleChildScrollView(

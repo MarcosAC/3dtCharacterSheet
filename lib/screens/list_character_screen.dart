@@ -1,4 +1,5 @@
 import 'package:dtcharactersheet/providers/character_provider.dart';
+import 'package:dtcharactersheet/utils/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,13 +17,18 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
         appBar: AppBar(
           title: const Text('Lista de Personagens'),
           titleTextStyle: const TextStyle(fontSize: 17),
-          // actions: [
-          //   IconButton(
-          //       onPressed: () {
-          //         Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
-          //       },
-          //       icon: const Icon(Icons.list))
-          // ],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).popAndPushNamed(AppRoutes.characterSheetScreen);
+                },
+                icon: const Icon(Icons.add)),
+            //   IconButton(
+            //       onPressed: () {
+            //         Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
+            //       },
+            //       icon: const Icon(Icons.list))
+          ],
         ),
         body: FutureBuilder(
             future: Provider.of<CharacterProvider>(context, listen: false).loadCharacters(),

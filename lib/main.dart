@@ -1,5 +1,7 @@
 import 'package:dtcharactersheet/providers/character_provider.dart';
+import 'package:dtcharactersheet/screens/character_sheet_screen.dart';
 import 'package:dtcharactersheet/screens/list_character_screen.dart';
+import 'package:dtcharactersheet/utils/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,11 +17,14 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [ChangeNotifierProvider(create: (context) => CharacterProvider())],
         child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const ListCharacterScreen(), //const CharacterSheetScreen(),
-        ));
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: const ListCharacterScreen(),
+            routes: {
+              AppRoutes.characterSheetScreen: (context) => const CharacterSheetScreen(),
+              AppRoutes.listCharacterScreen: (context) => const ListCharacterScreen()
+            }));
   }
 }

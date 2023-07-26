@@ -1,5 +1,6 @@
 import 'package:dtcharactersheet/models/character.dart';
 import 'package:dtcharactersheet/providers/character_provider.dart';
+import 'package:dtcharactersheet/utils/routes/app_routes.dart';
 import 'package:dtcharactersheet/widgets/characteristic_item.dart';
 import 'package:dtcharactersheet/widgets/characteristics.dart';
 import 'package:dtcharactersheet/widgets/mult_line_text_field.dart';
@@ -90,6 +91,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   experience: int.parse(_experienceController.text),
                 );
                 Provider.of<CharacterProvider>(context, listen: false).addCharacter(character);
+                Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
               },
               icon: const Icon(Icons.save)),
           IconButton(

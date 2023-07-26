@@ -63,7 +63,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
         title: const Text("Ficha do Personagem - 3D&T"),
         titleTextStyle: const TextStyle(fontSize: 17),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+          //IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
           IconButton(
               onPressed: () {
                 Character character = Character(
@@ -96,7 +96,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
               icon: const Icon(Icons.save)),
           IconButton(
               onPressed: () {
-                Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
+                Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
               },
               icon: const Icon(Icons.list))
           //PopupMenuButton(itemBuilder: (BuildContext context) => <PopupMenuEntry>[]),

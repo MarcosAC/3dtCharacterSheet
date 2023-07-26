@@ -37,11 +37,17 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
                 : Consumer<CharacterProvider>(
                     builder: (context, characters, child) => characters.itemsCount == 0
                         ? child!
-                        : ListView.separated(
+                        : ListView.builder(
                             itemBuilder: (BuildContext context, int index) {
-                              return ListTile(title: Text('Personagen: ${characters.characterByIndex(index).name}'));
+                              return Card(
+                                child: ListTile(
+                                  leading: const CircleAvatar(child: Text('P')),
+                                  title: Text('Personagen: ${characters.characterByIndex(index).name}'),
+                                  subtitle: Text(
+                                      'Pontos de Vida: ${characters.characterByIndex(index).healthPoints}\nXP: ${characters.characterByIndex(index).experience}'),
+                                ),
+                              );
                             },
-                            separatorBuilder: (BuildContext context, index) => const Divider(),
                             itemCount: characters.itemsCount,
                           ),
                     child: const Center(child: Text('Não existe fichas de persongens!')))));

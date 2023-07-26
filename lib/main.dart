@@ -1,5 +1,5 @@
 import 'package:dtcharactersheet/providers/character_provider.dart';
-import 'package:dtcharactersheet/screens/character_sheet_screen.dart';
+import 'package:dtcharactersheet/screens/list_character_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: const CharacterSheetScreen(),
+          home: const ListCharacterScreen(), //const CharacterSheetScreen(),
         ));
   }
 }

@@ -10,21 +10,19 @@ class ListCharacterScreen extends StatefulWidget {
 }
 
 class _ListCharacterScreenState extends State<ListCharacterScreen> {
-  //final List<Character> characters = Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Lista de Personagens'),
           titleTextStyle: const TextStyle(fontSize: 17),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
-                },
-                icon: const Icon(Icons.list))
-          ],
+          // actions: [
+          //   IconButton(
+          //       onPressed: () {
+          //         Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
+          //       },
+          //       icon: const Icon(Icons.list))
+          // ],
         ),
         body: FutureBuilder(
             future: Provider.of<CharacterProvider>(context, listen: false).loadCharacters(),
@@ -35,9 +33,7 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
                         ? child!
                         : ListView.separated(
                             itemBuilder: (BuildContext context, int index) {
-                              return SizedBox(
-                                child: Center(child: Text('Personagem ${characters.itemsCount}')),
-                              );
+                              return ListTile(title: Text('Personagen: ${characters.characterByIndex(index).name}'));
                             },
                             separatorBuilder: (BuildContext context, index) => const Divider(),
                             itemCount: characters.itemsCount,

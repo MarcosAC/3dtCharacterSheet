@@ -44,6 +44,14 @@ class CharacterProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  Character characterByIndex(int index) {
+    return _characters[index];
+  }
+
+  List<Character> get listCharacters {
+    return [..._characters];
+  }
+
   int get itemsCount {
     return _characters.length;
   }

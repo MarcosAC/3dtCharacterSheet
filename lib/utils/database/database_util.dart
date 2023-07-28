@@ -1,3 +1,4 @@
+import 'package:dtcharactersheet/models/character.dart';
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart' as db;
 
@@ -41,12 +42,12 @@ class DataBaseUtil {
 
   static Future<void> insert(String table, Map<String, dynamic> data) async {
     final dataBase = await DataBaseUtil.database();
+    await dataBase.insert(table, data, conflictAlgorithm: db.ConflictAlgorithm.replace);
+  }
 
-    await dataBase.insert(
-      table,
-      data,
-      conflictAlgorithm: db.ConflictAlgorithm.replace,
-    );
+  static Future<void> update(String table, Character data) async {
+    final dataBase = await DataBaseUtil.database();
+    await dataBase.update(table, data.toMap(), where: 'id = ?', whereArgs: [data.id]);
   }
 
   static Future<List<Map<String, dynamic>>> getAll(String table) async {

@@ -47,10 +47,9 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
                                           'Pontos de Vida: ${characters.characterByIndex(index).healthPoints}\nXP: ${characters.characterByIndex(index).experience}'),
                                       onTap: () {
                                         Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: ((context) => CharacterSheetScreen(character: characters.characterByIndex(index)))),
-                                        );
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: ((context) => CharacterSheetScreen(character: characters.characterByIndex(index)))));
                                       }));
                             },
                             itemCount: characters.itemsCount,

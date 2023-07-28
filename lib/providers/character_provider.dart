@@ -47,10 +47,9 @@ class CharacterProvider with ChangeNotifier {
   Future<void> updateCharacter(Character character) async {
     int index = _characters.indexWhere((characters) => characters.id == character.id);
 
-    final teste = listCharacters.where((characters) => characters.id == character.id);
-
     if (index >= 0) {
       Character newCharacter = Character(
+        id: character.id,
         name: character.name,
         force: character.force,
         ability: character.ability,
@@ -75,14 +74,47 @@ class CharacterProvider with ChangeNotifier {
         experience: character.experience,
       );
 
+      DataBaseUtil.update('characters', newCharacter);
       _characters[index] = newCharacter;
       notifyListeners();
     }
   }
 
   Character characterByIndex(int index) {
-    final texte = _characters[index];
     return _characters[index];
+  }
+
+  Character? characterById(int id) {
+    _characters = listCharacters.where((element) => element.id == id).toList();
+    Character? newCharacter;
+
+    for (var character in _characters) {
+      newCharacter = Character(
+          name: character.name,
+          force: character.force,
+          ability: character.ability,
+          resistance: character.resistance,
+          armor: character.armor,
+          firePower: character.firePower,
+          healthPoints: character.healthPoints,
+          magicPoints: character.magicPoints,
+          forceDamage: character.forceDamage,
+          firePowerDamage: character.firePowerDamage,
+          water: character.water,
+          air: character.air,
+          fire: character.fire,
+          light: character.light,
+          earth: character.earth,
+          darkness: character.darkness,
+          advantage: character.advantage,
+          disadvantage: character.disadvantage,
+          spells: character.spells,
+          moneyItems: character.moneyItems,
+          history: character.history,
+          experience: character.experience);
+    }
+
+    return newCharacter;
   }
 
   List<Character> get listCharacters {

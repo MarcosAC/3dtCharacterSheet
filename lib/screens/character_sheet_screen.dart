@@ -104,7 +104,8 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
           actions: [
             IconButton(
                 onPressed: () {
-                  Character character = Character(
+                  Character newCharacter = Character(
+                    id: character!.id,
                     name: _nomeController.text,
                     force: int.parse(_forceController.text),
                     ability: int.parse(_abilityController.text),
@@ -130,10 +131,10 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   );
 
                   if (isEdit) {
-                    Provider.of<CharacterProvider>(context, listen: false).updateCharacter(character);
+                    Provider.of<CharacterProvider>(context, listen: false).updateCharacter(newCharacter);
                     Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
                   } else {
-                    Provider.of<CharacterProvider>(context, listen: false).addCharacter(character);
+                    Provider.of<CharacterProvider>(context, listen: false).addCharacter(newCharacter);
                     Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
                   }
                 },

@@ -45,6 +45,11 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
                                       title: Text('Personagen: ${characters.characterByIndex(index).name}'),
                                       subtitle: Text(
                                           'Pontos de Vida: ${characters.characterByIndex(index).healthPoints}\nXP: ${characters.characterByIndex(index).experience}'),
+                                      trailing: IconButton(
+                                          onPressed: () {
+                                            characters.delete(characters.characterByIndex(index).id!);
+                                          },
+                                          icon: const Icon(Icons.delete_forever_outlined, color: Colors.black)),
                                       onTap: () {
                                         Navigator.pushReplacement(
                                             context,

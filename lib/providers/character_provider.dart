@@ -80,6 +80,11 @@ class CharacterProvider with ChangeNotifier {
     }
   }
 
+  Future<void> delete(int id) async {
+    var character = characterById(id);
+    DataBaseUtil.delete('characters', character!.id);
+  }
+
   Character characterByIndex(int index) {
     return _characters[index];
   }

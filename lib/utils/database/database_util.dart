@@ -45,6 +45,11 @@ class DataBaseUtil {
     await dataBase.insert(table, data, conflictAlgorithm: db.ConflictAlgorithm.replace);
   }
 
+  static Future<void> delete(String table, int? id) async {
+    final dataBase = await DataBaseUtil.database();
+    await dataBase.delete(table, where: 'id = ?', whereArgs: [id]);
+  }
+
   static Future<void> update(String table, Character data) async {
     final dataBase = await DataBaseUtil.database();
     await dataBase.update(table, data.toMap(), where: 'id = ?', whereArgs: [data.id]);

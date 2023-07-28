@@ -105,7 +105,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
             IconButton(
                 onPressed: () {
                   Character newCharacter = Character(
-                    id: character!.id,
+                    id: character?.id,
                     name: _nomeController.text,
                     force: int.parse(_forceController.text),
                     ability: int.parse(_abilityController.text),

@@ -83,6 +83,36 @@ class CharacterProvider with ChangeNotifier {
   Future<void> delete(int id) async {
     var character = characterById(id);
     DataBaseUtil.delete('characters', character!.id);
+    //_characters.remove(character);
+    final listCharacter = await DataBaseUtil.getAll('characters');
+    _characters = _characters = listCharacter
+        .map((character) => Character(
+              id: character['id'],
+              name: character['name'],
+              force: character['force'],
+              ability: character['ability'],
+              resistance: character['resistance'],
+              armor: character['armor'],
+              firePower: character['firePower'],
+              healthPoints: character['healthPoints'],
+              magicPoints: character['magicPoints'],
+              forceDamage: character['forceDamage'],
+              firePowerDamage: character['firePowerDamage'],
+              water: character['water'],
+              air: character['air'],
+              fire: character['fire'],
+              light: character['light'],
+              earth: character['earth'],
+              darkness: character['darkness'],
+              advantage: character['advantage'],
+              disadvantage: character['disadvantage'],
+              spells: character['spells'],
+              moneyItems: character['moneyItems'],
+              history: character['history'],
+              experience: character['experience'],
+            ))
+        .toList();
+    notifyListeners();
   }
 
   Character characterByIndex(int index) {
@@ -95,6 +125,7 @@ class CharacterProvider with ChangeNotifier {
 
     for (var character in _characters) {
       newCharacter = Character(
+          id: character.id,
           name: character.name,
           force: character.force,
           ability: character.ability,

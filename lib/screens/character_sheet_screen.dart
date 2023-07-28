@@ -23,6 +23,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
   final Character? character;
 
   bool isVisible = false;
+  bool isEdit = false;
 
   final _nomeController = TextEditingController();
   final _forceController = TextEditingController();
@@ -52,6 +53,8 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
     super.initState();
 
     if (character != null) {
+      isEdit = true;
+
       _nomeController.text = character!.name;
       _forceController.text = character!.force.toString();
       _abilityController.text = character!.ability.toString();
@@ -126,8 +129,13 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                     experience: int.parse(_experienceController.text),
                   );
 
-                  Provider.of<CharacterProvider>(context, listen: false).addCharacter(character);
-                  Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
+                  if (isEdit) {
+                    Provider.of<CharacterProvider>(context, listen: false).updateCharacter(character);
+                    Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
+                  } else {
+                    Provider.of<CharacterProvider>(context, listen: false).addCharacter(character);
+                    Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
+                  }
                 },
                 icon: const Icon(Icons.save)),
             IconButton(

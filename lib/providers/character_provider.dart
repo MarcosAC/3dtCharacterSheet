@@ -44,7 +44,44 @@ class CharacterProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> updateCharacter(Character character) async {
+    int index = _characters.indexWhere((characters) => characters.id == character.id);
+
+    final teste = listCharacters.where((characters) => characters.id == character.id);
+
+    if (index >= 0) {
+      Character newCharacter = Character(
+        name: character.name,
+        force: character.force,
+        ability: character.ability,
+        resistance: character.resistance,
+        armor: character.armor,
+        firePower: character.firePower,
+        healthPoints: character.healthPoints,
+        magicPoints: character.magicPoints,
+        forceDamage: character.forceDamage,
+        firePowerDamage: character.firePowerDamage,
+        water: character.water,
+        air: character.air,
+        fire: character.fire,
+        light: character.light,
+        earth: character.earth,
+        darkness: character.darkness,
+        advantage: character.advantage,
+        disadvantage: character.disadvantage,
+        spells: character.spells,
+        moneyItems: character.moneyItems,
+        history: character.history,
+        experience: character.experience,
+      );
+
+      _characters[index] = newCharacter;
+      notifyListeners();
+    }
+  }
+
   Character characterByIndex(int index) {
+    final texte = _characters[index];
     return _characters[index];
   }
 

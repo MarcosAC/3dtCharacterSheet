@@ -49,54 +49,51 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
   final _experienceController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-
-    if (character != null) {
-      isEdit = true;
-
-      _nomeController.text = character!.name;
-      _forceController.text = character!.force.toString();
-      _abilityController.text = character!.ability.toString();
-      _resistanceController.text = character!.resistance.toString();
-      _armorController.text = character!.armor.toString();
-      _firePowersController.text = character!.firePower.toString();
-      _healthPointsController.text = character!.healthPoints.toString();
-      _magicPointsController.text = character!.magicPoints.toString();
-      _forceDamageController.text = character!.forceDamage!;
-      _firePowerDamageController.text = character!.firePowerDamage!;
-      _waterController.text = character!.water.toString();
-      _airController.text = character!.air.toString();
-      _fireController.text = character!.fire.toString();
-      _lightController.text = character!.light.toString();
-      _earthController.text = character!.earth.toString();
-      _darknessController.text = character!.darkness.toString();
-      _advantageController.text = character!.advantage!;
-      _disadvantageController.text = character!.disadvantage!;
-      _spellsController.text = character!.spells!;
-      _historyController.text = character!.history!;
-      _moneyController.text = character!.moneyItems!;
-      _experienceController.text = character!.experience.toString();
-    } else {
-      _forceController.text = '0';
-      _abilityController.text = '0';
-      _resistanceController.text = '0';
-      _armorController.text = '0';
-      _firePowersController.text = '0';
-      _healthPointsController.text = '0';
-      _magicPointsController.text = '0';
-      _waterController.text = '0';
-      _airController.text = '0';
-      _fireController.text = '0';
-      _lightController.text = '0';
-      _earthController.text = '0';
-      _darknessController.text = '0';
-      _experienceController.text = '0';
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
+    setState(() {
+      if (character != null) {
+        isEdit = true;
+
+        _nomeController.text = character!.name;
+        _forceController.text = character!.force.toString();
+        _abilityController.text = character!.ability.toString();
+        _resistanceController.text = character!.resistance.toString();
+        _armorController.text = character!.armor.toString();
+        _firePowersController.text = character!.firePower.toString();
+        _healthPointsController.text = character!.healthPoints.toString();
+        _magicPointsController.text = character!.magicPoints.toString();
+        _forceDamageController.text = character!.forceDamage!;
+        _firePowerDamageController.text = character!.firePowerDamage!;
+        _waterController.text = character!.water.toString();
+        _airController.text = character!.air.toString();
+        _fireController.text = character!.fire.toString();
+        _lightController.text = character!.light.toString();
+        _earthController.text = character!.earth.toString();
+        _darknessController.text = character!.darkness.toString();
+        _advantageController.text = character!.advantage!;
+        _disadvantageController.text = character!.disadvantage!;
+        _spellsController.text = character!.spells!;
+        _historyController.text = character!.history!;
+        _moneyController.text = character!.moneyItems!;
+        _experienceController.text = character!.experience.toString();
+      } else {
+        _forceController.text = '0';
+        _abilityController.text = '0';
+        _resistanceController.text = '0';
+        _armorController.text = '0';
+        _firePowersController.text = '0';
+        _healthPointsController.text = '0';
+        _magicPointsController.text = '0';
+        _waterController.text = '0';
+        _airController.text = '0';
+        _fireController.text = '0';
+        _lightController.text = '0';
+        _earthController.text = '0';
+        _darknessController.text = '0';
+        _experienceController.text = '0';
+      }
+    });
+
     return Scaffold(
         appBar: AppBar(
           title: const Text("Ficha do Personagem - 3D&T"),

@@ -83,7 +83,6 @@ class CharacterProvider with ChangeNotifier {
   Future<void> delete(int id) async {
     var character = characterById(id);
     DataBaseUtil.delete('characters', character!.id);
-    //_characters.remove(character);
     final listCharacter = await DataBaseUtil.getAll('characters');
     _characters = _characters = listCharacter
         .map((character) => Character(

@@ -24,7 +24,7 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
           children: [
             IconButton(
               onPressed: () {
-                if (_counter > 0) _decrementCounter();
+                _decrementCounter();
               },
               icon: const Icon(Icons.remove_circle, color: Colors.red),
             ),
@@ -62,15 +62,23 @@ class _CharacteristicItemState extends State<CharacteristicItem> {
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
-      widget.itemTextController!.text = '$_counter';
+      if (widget.itemTextController!.text.isNotEmpty) {
+        _counter = int.parse(widget.itemTextController!.text);
+        _counter++;
+        widget.itemTextController!.text = '$_counter';
+      }
     });
   }
 
   void _decrementCounter() {
     setState(() {
-      _counter--;
-      widget.itemTextController!.text = '$_counter';
+      if (widget.itemTextController!.text.isNotEmpty) {
+        _counter = int.parse(widget.itemTextController!.text);
+        if (_counter > 0) {
+          _counter--;
+          widget.itemTextController!.text = '$_counter';
+        }
+      }
     });
   }
 }

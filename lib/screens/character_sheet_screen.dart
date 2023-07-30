@@ -14,14 +14,10 @@ class CharacterSheetScreen extends StatefulWidget {
   final Character? character;
 
   @override
-  State<CharacterSheetScreen> createState() => _CharacterSheetScreenState(character);
+  State<CharacterSheetScreen> createState() => _CharacterSheetScreenState();
 }
 
 class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
-  _CharacterSheetScreenState(this.character);
-
-  final Character? character;
-
   bool isVisible = false;
   bool isEdit = false;
 
@@ -51,31 +47,31 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
   @override
   Widget build(BuildContext context) {
     setState(() {
-      if (character != null) {
+      if (widget.character != null) {
         isEdit = true;
 
-        _nomeController.text = character!.name;
-        _forceController.text = character!.force.toString();
-        _abilityController.text = character!.ability.toString();
-        _resistanceController.text = character!.resistance.toString();
-        _armorController.text = character!.armor.toString();
-        _firePowersController.text = character!.firePower.toString();
-        _healthPointsController.text = character!.healthPoints.toString();
-        _magicPointsController.text = character!.magicPoints.toString();
-        _forceDamageController.text = character!.forceDamage!;
-        _firePowerDamageController.text = character!.firePowerDamage!;
-        _waterController.text = character!.water.toString();
-        _airController.text = character!.air.toString();
-        _fireController.text = character!.fire.toString();
-        _lightController.text = character!.light.toString();
-        _earthController.text = character!.earth.toString();
-        _darknessController.text = character!.darkness.toString();
-        _advantageController.text = character!.advantage!;
-        _disadvantageController.text = character!.disadvantage!;
-        _spellsController.text = character!.spells!;
-        _historyController.text = character!.history!;
-        _moneyController.text = character!.moneyItems!;
-        _experienceController.text = character!.experience.toString();
+        _nomeController.text = widget.character!.name;
+        _forceController.text = widget.character!.force.toString();
+        _abilityController.text = widget.character!.ability.toString();
+        _resistanceController.text = widget.character!.resistance.toString();
+        _armorController.text = widget.character!.armor.toString();
+        _firePowersController.text = widget.character!.firePower.toString();
+        _healthPointsController.text = widget.character!.healthPoints.toString();
+        _magicPointsController.text = widget.character!.magicPoints.toString();
+        _forceDamageController.text = widget.character!.forceDamage!;
+        _firePowerDamageController.text = widget.character!.firePowerDamage!;
+        _waterController.text = widget.character!.water.toString();
+        _airController.text = widget.character!.air.toString();
+        _fireController.text = widget.character!.fire.toString();
+        _lightController.text = widget.character!.light.toString();
+        _earthController.text = widget.character!.earth.toString();
+        _darknessController.text = widget.character!.darkness.toString();
+        _advantageController.text = widget.character!.advantage!;
+        _disadvantageController.text = widget.character!.disadvantage!;
+        _spellsController.text = widget.character!.spells!;
+        _historyController.text = widget.character!.history!;
+        _moneyController.text = widget.character!.moneyItems!;
+        _experienceController.text = widget.character!.experience.toString();
       } else {
         _forceController.text = '0';
         _abilityController.text = '0';
@@ -102,7 +98,7 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
             IconButton(
                 onPressed: () {
                   Character newCharacter = Character(
-                    id: character?.id,
+                    id: widget.character?.id,
                     name: _nomeController.text,
                     force: int.parse(_forceController.text),
                     ability: int.parse(_abilityController.text),

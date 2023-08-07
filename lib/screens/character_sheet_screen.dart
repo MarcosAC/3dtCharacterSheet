@@ -124,11 +124,34 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   );
 
                   if (isEdit) {
-                    Provider.of<CharacterProvider>(context, listen: false).updateCharacter(newCharacter);
-                    Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              title: const Text('Editar Personagem'),
+                              content: const Text('Deseja mesmo editar personagem?'),
+                              actions: [
+                                TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
+                                TextButton(
+                                    onPressed: () {
+                                      Provider.of<CharacterProvider>(context, listen: false).updateCharacter(newCharacter);
+                                      Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
+                                    },
+                                    child: const Text('Ok'))
+                              ],
+                            ));
                   } else {
-                    Provider.of<CharacterProvider>(context, listen: false).addCharacter(newCharacter);
-                    Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            AlertDialog(title: const Text('Salvar Personagem'), content: const Text('Deseja salvar personagem?'), actions: [
+                              TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
+                              TextButton(
+                                  onPressed: () {
+                                    Provider.of<CharacterProvider>(context, listen: false).addCharacter(newCharacter);
+                                    Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
+                                  },
+                                  child: const Text('Ok'))
+                            ]));
                   }
                 },
                 icon: const Icon(Icons.save)),

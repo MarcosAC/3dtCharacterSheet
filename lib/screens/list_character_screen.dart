@@ -23,12 +23,7 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
               onPressed: () {
                 Navigator.of(context).popAndPushNamed(AppRoutes.characterSheetScreen);
               },
-              icon: const Icon(Icons.add)),
-          //   IconButton(
-          //       onPressed: () {
-          //         Provider.of<CharacterProvider>(context, listen: false).loadCharacters();
-          //       },
-          //       icon: const Icon(Icons.list))
+              icon: const Icon(Icons.add))
         ]),
         body: FutureBuilder(
             future: Provider.of<CharacterProvider>(context, listen: false).loadCharacters(),
@@ -46,16 +41,25 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
                                       subtitle: Text(
                                           'Pontos de Vida: ${characters.characterByIndex(index).healthPoints}\nXP: ${characters.characterByIndex(index).experience}'),
                                       trailing: IconButton(
-                                          onPressed: () {
-                                            characters.delete(characters.characterByIndex(index).id!);
-                                          },
+                                          onPressed: () => showDialog(
+                                              context: context,
+                                              builder: (BuildContext contex) => AlertDialog(
+                                                      title: const Text('Excluir Personage'),
+                                                      content: const Text('Deseja mesmo excluir Personagem?'),
+                                                      actions: [
+                                                        TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
+                                                        TextButton(
+                                                            onPressed: () {
+                                                              characters.delete(characters.characterByIndex(index).id!);
+                                                              Navigator.pop(context);
+                                                            },
+                                                            child: const Text('Ok'))
+                                                      ])),
                                           icon: const Icon(Icons.delete_forever_outlined, color: Colors.black)),
-                                      onTap: () {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: ((context) => CharacterSheetScreen(character: characters.characterByIndex(index)))));
-                                      }));
+                                      onTap: () => Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: ((context) => CharacterSheetScreen(character: characters.characterByIndex(index)))))));
                             },
                             itemCount: characters.itemsCount,
                           ),

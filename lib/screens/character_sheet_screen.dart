@@ -140,18 +140,22 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                               ],
                             ));
                   } else {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            AlertDialog(title: const Text('Salvar Personagem'), content: const Text('Deseja salvar personagem?'), actions: [
-                              TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
-                              TextButton(
-                                  onPressed: () {
-                                    Provider.of<CharacterProvider>(context, listen: false).addCharacter(newCharacter);
-                                    Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
-                                  },
-                                  child: const Text('Ok'))
-                            ]));
+                    try {
+                      Provider.of<CharacterProvider>(context, listen: false).addCharacter(newCharacter);
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              AlertDialog(title: const Text('Sucesso! :D'), content: const Text('Personagem salvo com sucesso. :)'), actions: [
+                                TextButton(onPressed: () => Navigator.pop(context), child: const Text('Ok')),
+                              ]));
+                    } catch (e) {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              AlertDialog(title: const Text('Erro! :X'), content: const Text('Erro salvar personagem. :('), actions: [
+                                TextButton(onPressed: () => Navigator.pop(context), child: const Text('Ok')),
+                              ]));
+                    }
                   }
                 },
                 icon: const Icon(Icons.save)),

@@ -50,8 +50,28 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
                                                         TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
                                                         TextButton(
                                                             onPressed: () {
-                                                              characters.delete(characters.characterByIndex(index).id!);
-                                                              Navigator.pop(context);
+                                                              try {
+                                                                characters.delete(characters.characterByIndex(index).id!);
+                                                                showDialog(
+                                                                    context: context,
+                                                                    builder: (BuildContext context) => AlertDialog(
+                                                                            title: const Text('Sucesso! :D'),
+                                                                            content: const Text('Personagem deletado com sucesso. :)'),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                  onPressed: () => Navigator.pop(context), child: const Text('Ok')),
+                                                                            ]));
+                                                              } catch (e) {
+                                                                showDialog(
+                                                                    context: context,
+                                                                    builder: (BuildContext context) => AlertDialog(
+                                                                            title: const Text('Erro! :X'),
+                                                                            content: const Text('Erro ao deletar personagem. :('),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                  onPressed: () => Navigator.pop(context), child: const Text('Ok')),
+                                                                            ]));
+                                                              }
                                                             },
                                                             child: const Text('Ok'))
                                                       ])),

@@ -44,7 +44,7 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
                                           onPressed: () => showDialog(
                                               context: context,
                                               builder: (BuildContext contex) => AlertDialog(
-                                                      title: const Text('Excluir Personage'),
+                                                      title: const Text('Excluir Personagem'),
                                                       content: const Text('Deseja mesmo excluir Personagem?'),
                                                       actions: [
                                                         TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
@@ -52,6 +52,7 @@ class _ListCharacterScreenState extends State<ListCharacterScreen> {
                                                             onPressed: () {
                                                               try {
                                                                 characters.delete(characters.characterByIndex(index).id!);
+                                                                Navigator.pop(context);
                                                                 showDialog(
                                                                     context: context,
                                                                     builder: (BuildContext context) => AlertDialog(

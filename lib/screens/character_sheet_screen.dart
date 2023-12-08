@@ -126,32 +126,61 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
                   if (isEdit) {
                     showDialog(
                         context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                              title: const Text('Editar Personagem'),
-                              content: const Text('Deseja mesmo editar personagem?'),
-                              actions: [
-                                TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
-                                TextButton(
-                                    onPressed: () {
-                                      Provider.of<CharacterProvider>(context, listen: false).updateCharacter(newCharacter);
-                                      Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
-                                    },
-                                    child: const Text('Ok'))
-                              ],
-                            ));
-                  } else {
-                    showDialog(
-                        context: context,
                         builder: (BuildContext context) =>
-                            AlertDialog(title: const Text('Salvar Personagem'), content: const Text('Deseja salvar personagem?'), actions: [
+                            AlertDialog(title: const Text('Editar Personagem'), content: const Text('Deseja editar personagem?'), actions: [
                               TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
                               TextButton(
                                   onPressed: () {
-                                    Provider.of<CharacterProvider>(context, listen: false).addCharacter(newCharacter);
-                                    Navigator.of(context).popAndPushNamed(AppRoutes.listCharacterScreen);
+                                    try {
+                                      Provider.of<CharacterProvider>(context, listen: false).updateCharacter(newCharacter);
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) => AlertDialog(
+                                                  title: const Text('Sucesso! :D'),
+                                                  content: const Text('Personagem editado com sucesso. :)'),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () => Navigator.of(context)
+                                                            .pushNamedAndRemoveUntil(AppRoutes.listCharacterScreen, (Route<dynamic> route) => false),
+                                                        child: const Text('Ok')),
+                                                  ]));
+                                    } catch (e) {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) => AlertDialog(
+                                                  title: const Text('Erro! :X'),
+                                                  content: const Text('Erro ao editar personagem. :('),
+                                                  actions: [
+                                                    TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context).pop(AppRoutes.listCharacterScreen);
+                                                        },
+                                                        child: const Text('Ok'))
+                                                  ]));
+                                    }
                                   },
                                   child: const Text('Ok'))
                             ]));
+                  } else {
+                    try {
+                      Provider.of<CharacterProvider>(context, listen: false).addCharacter(newCharacter);
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              AlertDialog(title: const Text('Sucesso! :D'), content: const Text('Personagem salvo com sucesso. :)'), actions: [
+                                TextButton(
+                                    onPressed: () =>
+                                        Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.listCharacterScreen, (Route<dynamic> route) => false),
+                                    child: const Text('Ok')),
+                              ]));
+                    } catch (e) {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              AlertDialog(title: const Text('Erro! :X'), content: const Text('Erro ao salvar personagem. :('), actions: [
+                                TextButton(onPressed: () => Navigator.pop(context), child: const Text('Ok')),
+                              ]));
+                    }
                   }
                 },
                 icon: const Icon(Icons.save)),

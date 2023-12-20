@@ -3,9 +3,12 @@ import 'package:dtcharactersheet/screens/character_sheet_screen.dart';
 import 'package:dtcharactersheet/screens/list_character_screen.dart';
 import 'package:dtcharactersheet/utils/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   runApp(const MyApp());
 }
 

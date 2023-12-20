@@ -6,6 +6,7 @@ import 'package:dtcharactersheet/widgets/characteristics.dart';
 import 'package:dtcharactersheet/widgets/mult_line_text_field.dart';
 import 'package:dtcharactersheet/widgets/text_field_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
 class CharacterSheetScreen extends StatefulWidget {
@@ -18,6 +19,10 @@ class CharacterSheetScreen extends StatefulWidget {
 }
 
 class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
+  BannerAd? _bannerAd;
+  bool _isLoaded = false;
+  final adUnitId = 'ca-app-pub-3940256099942544/6300978111';
+
   bool isVisible = false;
   bool isEdit = false;
 
@@ -43,6 +48,38 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
   final _moneyController = TextEditingController();
   final _historyController = TextEditingController();
   final _experienceController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    loadAd();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
+  }
+
+  void loadAd() {
+    _bannerAd = BannerAd(
+      adUnitId: adUnitId,
+      request: const AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          debugPrint('$ad loaded.');
+          setState(() {
+            _isLoaded = true;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          debugPrint('BannerAd failed to load: $err');
+          ad.dispose();
+        },
+      ),
+    )..load();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -331,6 +368,22 @@ class _CharacterSheetScreenState extends State<CharacterSheetScreen> {
 
                   // História
                   Characteristics(tittle: 'História', item: [MultLineTextField(textController: _historyController)]),
+
+                  Stack(
+                    children: [
+                      if (_bannerAd != null)
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: SafeArea(
+                            child: SizedBox(
+                              width: _bannerAd!.size.width.toDouble(),
+                              height: _bannerAd!.size.height.toDouble(),
+                              child: AdWidget(ad: _bannerAd!),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
                 ]))));
   }
 }

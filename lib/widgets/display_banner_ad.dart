@@ -11,7 +11,7 @@ class DisplayBannerAd extends StatefulWidget {
 class _DisplayBannerAdState extends State<DisplayBannerAd> {
   BannerAd? _bannerAd;
   bool _isLoaded = false;
-  final adUnitId = 'ca-app-pub-3940256099942544/6300978111';
+  final adUnitId = 'ca-app-pub-8935754891868419~9204285605';
 
   @override
   void initState() {

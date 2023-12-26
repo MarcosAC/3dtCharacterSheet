@@ -1,4 +1,4 @@
-package com.example.dtcharactersheet
+package br.com.marcossoftware.dtcharactersheet
 
 import io.flutter.embedding.android.FlutterActivity
 

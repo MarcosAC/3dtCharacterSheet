@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dtcharactersheet">
+    package="br.com.marcossoftware.dtcharactersheet">
    <application
-        android:label="Ficha do Personagem"
+        android:label="Ficha do Personagem 3D&T"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

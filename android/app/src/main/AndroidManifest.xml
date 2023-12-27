@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.marcossoftware.dtcharactersheet">
    <application
-        android:label="Ficha do Personagem 3D&T"
+        android:label="Ficha do Personagem 3DT"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
@@ -33,6 +33,6 @@
 
         <meta-data 
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-8935754891868419~9204285605" />
     </application>
 </manifest>
